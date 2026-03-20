@@ -12,6 +12,9 @@ npm-debug.log
 yarn-error.log
 .env
 
+# Zip dosyaları (GitHub'a yükleme)
+*.zip
+
 # SQL dumps (do not commit)
 /*.sql
 personelnoktasit*.sql
