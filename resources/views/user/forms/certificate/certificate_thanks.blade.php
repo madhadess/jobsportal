@@ -1,0 +1,1 @@
+<div class="alert alert-success">Sertifika başarıyla eklendi!</div>

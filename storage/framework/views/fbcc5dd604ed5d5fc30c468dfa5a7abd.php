@@ -1,0 +1,48 @@
+
+<?php $__env->startSection('content'); ?>
+<table border="0" cellpadding="0" cellspacing="0" class="force-row" style="width: 100%;    border-bottom: solid 1px #ccc;">
+    <tr>
+        <td class="content-wrapper" style="padding-left:24px;padding-right:24px"><br>
+            <div class="title" style="font-family: Helvetica, Arial, sans-serif; font-size: 18px;font-weight:400;color: #000;text-align: left;
+                 padding-top: 20px;">Sayın <?php echo e($name); ?>,</div></td>
+    </tr>
+    <tr>
+        <td class="cols-wrapper" style="padding-left:12px;padding-right:12px"><!--[if mso]>
+         <table border="0" width="576" cellpadding="0" cellspacing="0" style="width: 576px;">
+            <tr>
+               <td width="192" style="width: 192px;" valign="top">
+                  <![endif]-->      
+            <table border="0" cellpadding="0" cellspacing="0" align="left" class="force-row" style="width: 100%;">
+                <tr>
+                    <td class="row" valign="top" style="padding-left:12px;padding-right:12px;padding-top:18px;padding-bottom:12px"><table border="0" cellpadding="0" cellspacing="0" style="width:100%;">
+                            <tr>
+                                <td class="subtitle" style="font-family:Helvetica, Arial, sans-serif;font-size:14px;line-height:22px;font-weight:400;color:#333;padding-bottom:30px; text-align: left;">
+                                    <p>İş ilanınızı <?php echo e($siteSetting->site_name); ?> sitesine gönderdiğiniz için teşekkür ederiz. Başvurunuz alınmıştır ve şu anda süper yönetici ekibimiz tarafından onay beklemektedir.</p> <p>
+İş ilanınız <strong>incelendiğinde</strong> ve <strong>onaylandığında</strong> size bildirim göndereceğiz. Bu süreçte herhangi bir sorunuz varsa veya yardıma ihtiyacınız olursa, lütfen bizimle iletişime geçmekten çekinmeyin.</p>                  
+                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: Helvetica, Arial, sans-serif;font-size: 14px;line-height: 22px;font-weight: 400;color: #333; padding-bottom: 30px;text-align: left;">
+                                <p style="margin-top:10px; font-family: Helvetica, Arial, sans-serif;font-size: 14px; color: #333;">                               
+                                Saygılarımızla, <br>
+<?php echo e($siteSetting->site_name); ?> Ekibi 
+</p>
+                                </td>
+                            </tr>
+                        </table>
+                        <br></td>
+                </tr>
+            </table>      
+            <!--[if mso]>
+               </td>
+            </tr>
+         </table>
+         <![endif]--></td>
+    </tr>
+</table>
+<?php $__env->stopSection(); ?>
+
+
+
+<?php echo $__env->make('admin.layouts.email_template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/personelnoktasit/public_html/resources/views/emails/job_posted_message_front.blade.php ENDPATH**/ ?>

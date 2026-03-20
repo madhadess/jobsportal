@@ -1,0 +1,251 @@
+<?php
+
+namespace App\Traits;
+
+use File;
+use ImgUploader;
+use Auth;
+use DB;
+use Input;
+use Carbon\Carbon;
+use Redirect;
+use App\User;
+use App\ProfileCv;
+use App\Http\Requests;
+use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use App\Http\Requests\ProfileCvFormRequest;
+use App\Http\Requests\ProfileCvFileFormRequest;
+
+trait ProfileCvsTrait
+{
+    /**
+     * Ensure the current web user can only act on their own profile (prevents IDOR).
+     */
+    private function ensureFrontCvOwner($user_id)
+    {
+        if (Auth::guard('web')->check() && (int) $user_id !== (int) Auth::guard('web')->id()) {
+            abort(403, __('Unauthorized'));
+        }
+    }
+
+    public function showProfileCvs(Request $request, $user_id)
+    {
+        $this->ensureFrontCvOwner($user_id);
+        $user = User::find($user_id);
+        $html = '<div class="col-mid-12"><table class="table table-striped"><thead class="table-light"><tr>
+        <th><strong>' . __('CV Başlığı') . '</strong></th>
+        <th><strong>' . __('Varsayılan CV') . '</strong></th>
+        <th><strong>' . __('Tarih') . '</strong></th>
+        <th><strong>' . __('İşlem') . '</strong></th>
+        </tr></thead>';
+        if (isset($user) && count($user->profileCvs)):
+            $cvCounter = 0;
+            foreach ($user->profileCvs as $cv):
+                $default = __('Varsayılan Değil');
+                if ($cv->is_default == 1)
+                    $default = __('Varsayılan CV');
+                $addedDate = $cv->created_at->format('Y-m-d H:i:s');
+
+                $html .= '
+                <tr id="cv_' . $cv->id . '">
+                    <td>' . ImgUploader::get_doc("cvs/$cv->cv_file", $cv->title, $cv->title) . '</td>
+                    <td><span class="text text-dark">' . $default . '</span></td>
+                    <td><span class="text text-dark">' . $addedDate . '</span></td>
+                    <td><a href="' . asset("cvs/$cv->cv_file") . '" download="' . $cv->title . '" title="' . $cv->title . '"><i class="fas fa-download"></i></a> <a href="javascript:;" onclick="showProfileCvEditModal(' . $cv->id . ');" class="text text-dark ms-2"><i class="fas fa-pencil-alt"></i></a> <a href="javascript:;" onclick="delete_profile_cv(' . $cv->id . ');" class="text text-danger ms-2"><i class="fas fa-times"></i></a></td>
+                </tr>';
+            endforeach;
+        endif;
+
+        echo $html . '</table></div>';
+    }
+
+    public function uploadCvFile($request)
+    {
+        $fileName = '';
+        if ($request->hasFile('cv_file')) {
+            $cv_file = $request->file('cv_file');
+            $fileName = ImgUploader::UploadDoc('cvs', $cv_file, $request->input('title'));
+        }
+        return $fileName;
+    }
+
+    public function getFrontProfileCvForm(Request $request, $user_id)
+    {
+        $this->ensureFrontCvOwner($user_id);
+        $user = User::find($user_id);
+        $returnHTML = view('user.forms.cv.cv_modal')->with('user', $user)->render();
+        return response()->json(array('success' => true, 'html' => $returnHTML));
+    }
+
+    public function getProfileCvForm(Request $request, $user_id)
+    {
+        $user = User::find($user_id);
+        $returnHTML = view('admin.user.forms.cv.cv_modal')->with('user', $user)->render();
+        return response()->json(array('success' => true, 'html' => $returnHTML));
+    }
+
+    public function storeProfileCv(ProfileCvFormRequest $request, $user_id)
+    {
+
+        $profileCv = new ProfileCv();
+        $profileCv = $this->assignValues($profileCv, $request, $user_id);
+        $profileCv->save();
+
+        $returnHTML = view('admin.user.forms.cv.cv_thanks')->render();
+        return response()->json(array('success' => true, 'status' => 200, 'html' => $returnHTML), 200);
+    }
+
+    public function storeFrontProfileCv(ProfileCvFormRequest $request, $user_id)
+    {
+        $this->ensureFrontCvOwner($user_id);
+        $profileCv = new ProfileCv();
+        $profileCv = $this->assignValues($profileCv, $request, $user_id);
+        $profileCv->save();
+
+        $returnHTML = view('user.forms.cv.cv_thanks')->render();
+        return response()->json(array('success' => true, 'status' => 200, 'html' => $returnHTML), 200);
+    }
+
+    private function assignValues($profileCv, $request, $user_id)
+    {
+        $profileCv->user_id = $user_id;
+        $profileCv->title = $request->input('title');
+        $profileCv->is_default = $request->input('is_default');
+
+        /*         * ************************************ */
+        if ((int) $request->input('is_default') == 1) {
+            $this->updateDefaultCv($profileCv->id);
+        }
+        /*         * ************************************ */
+
+        if ($request->hasFile('cv_file') && $profileCv->id > 0) {
+            $this->deleteCv($profileCv->id);
+        }
+        $profileCv->cv_file = $this->uploadCvFile($request);
+
+        return $profileCv;
+    }
+
+    public function getProfileCvEditForm(Request $request, $user_id)
+    {
+        $cv_id = $request->input('cv_id');
+        $profileCv = ProfileCv::find($cv_id);
+        $user = User::find($user_id);
+        $returnHTML = view('admin.user.forms.cv.cv_edit_modal')
+            ->with('user', $user)
+            ->with('profileCv', $profileCv)
+            ->render();
+        return response()->json(array('success' => true, 'html' => $returnHTML));
+    }
+
+    public function getFrontProfileCvEditForm(Request $request, $user_id)
+    {
+        $this->ensureFrontCvOwner($user_id);
+        $cv_id = $request->input('cv_id');
+        $profileCv = ProfileCv::find($cv_id);
+        if ($profileCv && (int) $profileCv->user_id !== (int) Auth::guard('web')->id()) {
+            abort(403, __('Unauthorized'));
+        }
+        $user = User::find($user_id);
+        $returnHTML = view('user.forms.cv.cv_edit_modal')
+            ->with('user', $user)
+            ->with('profileCv', $profileCv)
+            ->render();
+        return response()->json(array('success' => true, 'html' => $returnHTML));
+    }
+
+    public function updateProfileCv(ProfileCvFormRequest $request, $cv_id, $user_id)
+    {
+
+        $profileCv = ProfileCv::find($cv_id);
+        $profileCv = $this->assignValues($profileCv, $request, $user_id);
+        $profileCv->update();
+
+        $returnHTML = view('admin.user.forms.cv.cv_edit_thanks')->render();
+        return response()->json(array('success' => true, 'status' => 200, 'html' => $returnHTML), 200);
+    }
+
+    public function updateFrontProfileCv(ProfileCvFormRequest $request, $cv_id, $user_id)
+    {
+        $this->ensureFrontCvOwner($user_id);
+        $profileCv = ProfileCv::findOrFail($cv_id);
+        if ((int) $profileCv->user_id !== (int) Auth::guard('web')->id()) {
+            abort(403, __('Unauthorized'));
+        }
+        $profileCv = $this->assignValues($profileCv, $request, $user_id);
+        $profileCv->update();
+
+        $returnHTML = view('user.forms.cv.cv_edit_thanks')->render();
+        return response()->json(array('success' => true, 'status' => 200, 'html' => $returnHTML), 200);
+    }
+
+    public function makeDefaultCv(Request $request)
+    {
+        $id = $request->input('id');
+        try {
+            $profileCv = ProfileCv::findOrFail($id);
+            $profileCv->is_default = 1;
+            $profileCv->update();
+            $this->updateDefaultCv($id);
+            echo 'ok';
+        } catch (ModelNotFoundException $e) {
+            echo 'notok';
+        }
+    }
+
+    private function updateDefaultCv($cv_id)
+    {
+        ProfileCv::where('is_default', '=', 1)->where('id', '<>', $cv_id)->update(['is_default' => 0]);
+    }
+
+    public function deleteAllProfileCvs($user_id)
+    {
+        $profileCvs = ProfileCv::where('user_id', '=', $user_id)->get();
+        foreach ($profileCvs as $profileCv) {
+            echo $this->removeProfileCv($profileCv->id);
+        }
+    }
+
+    public function deleteProfileCv(Request $request)
+    {
+        $id = $request->input('id');
+        $profileCv = ProfileCv::find($id);
+        if (!$profileCv) {
+            echo 'notok';
+            return;
+        }
+        if (Auth::guard('web')->check() && (int) $profileCv->user_id !== (int) Auth::guard('web')->id()) {
+            abort(403, __('Unauthorized'));
+        }
+        echo $this->removeProfileCv($id);
+    }
+
+    private function removeProfileCv($id)
+    {
+        try {
+            $this->deleteCv($id);
+            $profileCv = ProfileCv::findOrFail($id);
+            $profileCv->delete();
+            return 'ok';
+        } catch (ModelNotFoundException $e) {
+            return 'notok';
+        }
+    }
+
+    private function deleteCv($id)
+    {
+        try {
+            $profileCv = ProfileCv::findOrFail($id);
+            $file = $profileCv->cv_file;
+            if (!empty($file)) {
+                File::delete(ImgUploader::real_public_path() . 'cvs/' . $file);
+            }
+            return 'ok';
+        } catch (ModelNotFoundException $e) {
+            return 'notok';
+        }
+    }
+
+}

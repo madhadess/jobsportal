@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kariyer Portal & Ev Hizmetleri Yazılımı - Özellik Listesi ve Devir Fiyatlandırması</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 30px;
+            background: #fff;
+        }
+
+        h1 {
+            color: #1e3c72;
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 5px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 15px;
+        }
+
+        h2 {
+            color: #667eea;
+            margin: 30px 0 15px;
+            font-size: 20px;
+            border-left: 4px solid #667eea;
+            padding-left: 10px;
+        }
+
+        h3 {
+            color: #1e3c72;
+            margin: 20px 0 10px;
+            font-size: 16px;
+        }
+
+        h4 {
+            color: #555;
+            margin: 15px 0 8px;
+            font-size: 14px;
+        }
+
+        .header-info {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 13px;
+        }
+
+        .section {
+            margin-bottom: 25px;
+            page-break-inside: avoid;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            padding: 4px 0 4px 25px;
+            position: relative;
+            font-size: 13px;
+        }
+
+        ul li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 13px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 10px 12px;
+            text-align: left;
+        }
+
+        th {
+            background: linear-gradient(135deg, #1e3c72 0%, #667eea 100%);
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #1e3c72;
+        }
+
+        .total-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .total-box h3 {
+            color: white;
+            margin: 0 0 15px;
+        }
+
+        .package-table th {
+            background: #28a745;
+        }
+
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 12px 15px;
+            margin: 15px 0;
+            font-size: 12px;
+        }
+
+        .included {
+            color: #28a745;
+        }
+
+        .excluded {
+            color: #dc3545;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+            color: #888;
+            font-size: 12px;
+        }
+
+        .two-columns {
+            display: flex;
+            gap: 20px;
+        }
+
+        .two-columns>div {
+            flex: 1;
+        }
+
+        @media print {
+            body {
+                padding: 20px;
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
+
+            h2 {
+                page-break-after: avoid;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🚀 KARİYER PORTAL & EV HİZMETLERİ YAZILIMI</h1>
+    <p class="header-info">
+        <strong>Özellik Listesi ve Devir Fiyatlandırması</strong><br>
+        Belge Tarihi: 3 Şubat 2026 | Versiyon: 1.0<br>
+        Teknoloji: Laravel 9.x, PHP 8.x, MySQL, Bootstrap 5
+    </p>
+
+    <h2>📋 SİSTEM ÖZELLİKLERİ</h2>
+
+    <div class="section">
+        <h3>1. İŞ PORTALI MODÜLÜ</h3>
+
+        <h4>1.1 İlan Yönetimi</h4>
+        <ul>
+            <li>İş ilanı oluşturma, düzenleme, silme</li>
+            <li>Öne çıkan ilan sistemi (Premium)</li>
+            <li>İlan süresi ve otomatik kapatma</li>
+            <li>SEO dostu URL yapısı (slug)</li>
+            <li>Çoklu dil desteği (TR/EN)</li>
+        </ul>
+
+        <h4>1.2 Aday (İş Arayan) Özellikleri</h4>
+        <ul>
+            <li>Üyelik ve profil yönetimi</li>
+            <li>CV yükleme ve online CV oluşturucu</li>
+            <li>İş başvurusu yapma ve takibi</li>
+            <li>Favori ilanlar ve iş alarmları</li>
+            <li>Mesajlaşma sistemi</li>
+        </ul>
+
+        <h4>1.3 İşveren (Şirket) Özellikleri</h4>
+        <ul>
+            <li>Şirket profili ve logo yönetimi</li>
+            <li>Çoklu ilan yayınlama</li>
+            <li>Başvuru görüntüleme ve aday arama</li>
+            <li>CV indirme ve mesajlaşma</li>
+            <li>Paket satın alma</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h3>2. EV HİZMETLERİ MODÜLÜ (Sihirbaz Sistemi)</h3>
+
+        <h4>2.1 Hizmet Kategorileri</h4>
+        <ul>
+            <li>Temizlik, Tadilat, Nakliyat, Bahçe bakımı, Boyama</li>
+            <li>Özel kategori ekleme imkanı</li>
+        </ul>
+
+        <h4>2.2 Sihirbaz (Wizard) Sistemi</h4>
+        <ul>
+            <li>Adım adım talep oluşturma</li>
+            <li>Dinamik soru-cevap formu</li>
+            <li>Çalışma şekli ve ek özellik seçimi</li>
+            <li>Konum bilgisi (İl/İlçe/Mahalle/Sokak)</li>
+            <li>Misafir kullanıcı desteği</li>
+        </ul>
+
+        <h4>2.3 Talep Yönetimi</h4>
+        <ul>
+            <li>Talep numarası ve durum takibi</li>
+            <li>Personel atama ve fiyat belirleme</li>
+            <li>Admin notları</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h3>3. BAKICI MODÜLÜ</h3>
+        <ul>
+            <li>Bebek, Çocuk, Yaşlı, Hasta bakıcısı türleri</li>
+            <li>Referans kontrolü ve sertifika yükleme</li>
+            <li>Çalışma tercihleri ve uzmanlık alanları</li>
+            <li>Meslek grubu seçimi (filtrelenmiş)</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h3>4. PERSONEL YÖNETİMİ</h3>
+        <ul>
+            <li>Hizmet personeli ve bakıcı kayıt formları</li>
+            <li>Otomatik personel eşleştirme sistemi</li>
+            <li>Bölge ve uzmanlık bazlı filtreleme</li>
+            <li>Belgeler ve sertifika yönetimi</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h3>5. ADMİN PANELİ (60+ Modül)</h3>
+
+        <div class="two-columns">
+            <div>
+                <h4>Yönetim</h4>
+                <ul>
+                    <li>Dashboard ve istatistikler</li>
+                    <li>Kullanıcı yönetimi (Aday/İşveren/Personel)</li>
+                    <li>Rol ve yetki sistemi</li>
+                    <li>Paket ve sipariş yönetimi</li>
+                </ul>
+            </div>
+            <div>
+                <h4>İçerik</h4>
+                <ul>
+                    <li>CMS sayfa yönetimi</li>
+                    <li>Blog, SSS, Slider</li>
+                    <li>Katalog tanımları (Şehir, Sektör vb.)</li>
+                    <li>Raporlama ve Excel dışa aktarım</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3>6. ÖDEME ENTEGRASYONLARI</h3>
+        <ul>
+            <li><strong>PayTR</strong> - Türkiye yerel ödeme</li>
+            <li><strong>Stripe</strong> - Uluslararası kredi kartı</li>
+            <li><strong>PayU</strong> - Alternatif ödeme</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h3>7. TEKNİK ÖZELLİKLER</h3>
+        <ul>
+            <li>Responsive tasarım (Mobil uyumlu)</li>
+            <li>SEO optimizasyonu</li>
+            <li>Çoklu dil altyapısı</li>
+            <li>E-posta bildirimleri</li>
+            <li>Güvenlik önlemleri (CSRF, XSS)</li>
+        </ul>
+    </div>
+
+    <h2>💰 DEVİR FİYATLANDIRMASI</h2>
+
+    <div class="section">
+        <h3>Yazılım Değerlendirmesi</h3>
+        <table>
+            <tr>
+                <th>Kalem</th>
+                <th>Açıklama</th>
+                <th>Değer</th>
+            </tr>
+            <tr>
+                <td>Kaynak Kod</td>
+                <td>Laravel tabanlı tam kaynak kod</td>
+                <td class="price">₺150.000</td>
+            </tr>
+            <tr>
+                <td>Veritabanı</td>
+                <td>60+ tablo, ilişkisel yapı</td>
+                <td class="price">₺25.000</td>
+            </tr>
+            <tr>
+                <td>Admin Panel</td>
+                <td>60+ modül, tam yönetim</td>
+                <td class="price">₺50.000</td>
+            </tr>
+            <tr>
+                <td>Ev Hizmetleri</td>
+                <td>Sihirbaz + Talep Sistemi</td>
+                <td class="price">₺40.000</td>
+            </tr>
+            <tr>
+                <td>Bakıcı Modülü</td>
+                <td>Eşleştirme + Yönetim</td>
+                <td class="price">₺30.000</td>
+            </tr>
+            <tr>
+                <td>Ödeme Entegrasyonları</td>
+                <td>PayTR, Stripe, PayU</td>
+                <td class="price">₺20.000</td>
+            </tr>
+            <tr>
+                <td>SEO & Çoklu Dil</td>
+                <td>Altyapı ve içerik</td>
+                <td class="price">₺15.000</td>
+            </tr>
+            <tr>
+                <td>Dokümantasyon</td>
+                <td>Teknik ve kullanıcı kılavuzu</td>
+                <td class="price">₺10.000</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="total-box">
+        <h3>📊 TOPLAM DEVİR PAKET SEÇENEKLERİ</h3>
+    </div>
+
+    <table class="package-table">
+        <tr>
+            <th>Paket</th>
+            <th>İçerik</th>
+            <th>Fiyat</th>
+        </tr>
+        <tr>
+            <td><strong>Sadece Kaynak Kod</strong></td>
+            <td>Kod + Veritabanı</td>
+            <td class="price">₺175.000</td>
+        </tr>
+        <tr>
+            <td><strong>Standart Devir</strong></td>
+            <td>Kod + DB + 30 Gün Destek</td>
+            <td class="price">₺250.000</td>
+        </tr>
+        <tr>
+            <td><strong>Premium Devir</strong></td>
+            <td>Kod + DB + 90 Gün Destek + Kurulum</td>
+            <td class="price">₺340.000</td>
+        </tr>
+        <tr>
+            <td><strong>Enterprise Devir</strong></td>
+            <td>Her şey + 1 Yıl Bakım + Özelleştirme</td>
+            <td class="price">₺500.000+</td>
+        </tr>
+    </table>
+
+    <div class="section">
+        <h3>📝 DEVİR KAPSAMI</h3>
+        <div class="two-columns">
+            <div>
+                <h4 class="included">✓ Dahil Olanlar</h4>
+                <ul>
+                    <li>Tam kaynak kod (tüm dosyalar)</li>
+                    <li>Veritabanı yapısı ve örnek veriler</li>
+                    <li>Kurulum ve kullanım kılavuzu</li>
+                    <li>Lisans devri (sınırsız kullanım)</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="excluded">✗ Dahil Olmayanlar</h4>
+                <ul style="color: #dc3545;">
+                    <li>Hosting/Sunucu maliyetleri</li>
+                    <li>Domain ve SSL maliyetleri</li>
+                    <li>Üçüncü parti API ücretleri</li>
+                    <li>Yeni özellik geliştirme</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3>🔧 SUNUCU GEREKSİNİMLERİ</h3>
+        <table>
+            <tr>
+                <td>PHP</td>
+                <td>8.0+</td>
+            </tr>
+            <tr>
+                <td>MySQL</td>
+                <td>5.7+ veya MariaDB 10.3+</td>
+            </tr>
+            <tr>
+                <td>RAM</td>
+                <td>2GB+ önerilir</td>
+            </tr>
+            <tr>
+                <td>Disk</td>
+                <td>10GB+ alan</td>
+            </tr>
+        </table>
+    </div>
+
+    <h2>📱 NATİVE MOBİL UYGULAMA FİYATLANDIRMASI</h2>
+
+    <div class="section">
+        <h3>Mobil Uygulama Özellikleri</h3>
+        <div class="two-columns">
+            <div>
+                <h4>📱 iOS Uygulama</h4>
+                <ul>
+                    <li>Swift/SwiftUI ile native geliştirme</li>
+                    <li>App Store yayınlama</li>
+                    <li>Push notification desteği</li>
+                    <li>Face ID / Touch ID entegrasyonu</li>
+                    <li>Apple Pay ödeme desteği</li>
+                </ul>
+            </div>
+            <div>
+                <h4>🤖 Android Uygulama</h4>
+                <ul>
+                    <li>Kotlin ile native geliştirme</li>
+                    <li>Play Store yayınlama</li>
+                    <li>Firebase push notification</li>
+                    <li>Biometric kimlik doğrulama</li>
+                    <li>Google Pay ödeme desteği</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3>Uygulama Modülleri</h3>
+        <ul>
+            <li>Kullanıcı kayıt ve giriş (Sosyal medya ile giriş)</li>
+            <li>Profil yönetimi ve CV görüntüleme</li>
+            <li>İş ilanları listeleme ve arama</li>
+            <li>İş başvurusu yapma</li>
+            <li>Ev hizmetleri sihirbazı (tam entegrasyon)</li>
+            <li>Bakıcı arama ve talep oluşturma</li>
+            <li>Anlık bildirimler (Push notification)</li>
+            <li>Mesajlaşma sistemi</li>
+            <li>Konum bazlı hizmet arama</li>
+            <li>Ödeme ve fatura geçmişi</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h3>Mobil Uygulama Fiyatlandırması</h3>
+        <table>
+            <tr>
+                <th>Platform</th>
+                <th>Açıklama</th>
+                <th>Fiyat</th>
+            </tr>
+            <tr>
+                <td><strong>iOS Uygulama</strong></td>
+                <td>Native Swift/SwiftUI + App Store yayınlama</td>
+                <td class="price">₺250.000</td>
+            </tr>
+            <tr>
+                <td><strong>Android Uygulama</strong></td>
+                <td>Native Kotlin + Play Store yayınlama</td>
+                <td class="price">₺200.000</td>
+            </tr>
+            <tr>
+                <td><strong>Cross-Platform (Flutter)</strong></td>
+                <td>Tek kod ile iOS + Android</td>
+                <td class="price">₺300.000</td>
+            </tr>
+            <tr>
+                <td><strong>Backend API Geliştirme</strong></td>
+                <td>Mobil için REST API hazırlığı</td>
+                <td class="price">₺75.000</td>
+            </tr>
+            <tr>
+                <td><strong>Push Notification Altyapısı</strong></td>
+                <td>Firebase + Apple Push</td>
+                <td class="price">₺25.000</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="total-box" style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);">
+        <h3>📱 MOBİL UYGULAMA PAKET SEÇENEKLERİ</h3>
+    </div>
+
+    <table class="package-table" style="margin-bottom: 30px;">
+        <tr style="background: #ff6b6b !important;">
+            <th style="background: #ff6b6b;">Paket</th>
+            <th style="background: #ff6b6b;">İçerik</th>
+            <th style="background: #ff6b6b;">Fiyat</th>
+        </tr>
+        <tr>
+            <td><strong>Sadece Android</strong></td>
+            <td>Android App + API + 30 Gün Destek</td>
+            <td class="price">₺300.000</td>
+        </tr>
+        <tr>
+            <td><strong>Sadece iOS</strong></td>
+            <td>iOS App + API + 30 Gün Destek</td>
+            <td class="price">₺350.000</td>
+        </tr>
+        <tr>
+            <td><strong>Flutter (iOS + Android)</strong></td>
+            <td>Cross-Platform + API + 60 Gün Destek</td>
+            <td class="price">₺400.000</td>
+        </tr>
+        <tr>
+            <td><strong>Native Duo (iOS + Android ayrı)</strong></td>
+            <td>Her iki platform native + API + 90 Gün Destek</td>
+            <td class="price">₺550.000</td>
+        </tr>
+        <tr>
+            <td><strong>Full Enterprise</strong></td>
+            <td>Native Duo + Web + 1 Yıl Bakım + Özelleştirme</td>
+            <td class="price">₺1.000.000+</td>
+        </tr>
+    </table>
+
+    <div class="section">
+        <h3>📲 Mobil Uygulama Süreçleri</h3>
+        <table>
+            <tr>
+                <th>Aşama</th>
+                <th>Süre</th>
+            </tr>
+            <tr>
+                <td>UI/UX Tasarım</td>
+                <td>2-3 Hafta</td>
+            </tr>
+            <tr>
+                <td>Geliştirme (Tek Platform)</td>
+                <td>8-12 Hafta</td>
+            </tr>
+            <tr>
+                <td>Test ve QA</td>
+                <td>2-3 Hafta</td>
+            </tr>
+            <tr>
+                <td>Store Yayınlama</td>
+                <td>1-2 Hafta</td>
+            </tr>
+            <tr>
+                <td><strong>TOPLAM (Tek Platform)</strong></td>
+                <td><strong>13-20 Hafta</strong></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="note">
+        <strong>📌 Not:</strong> Fiyatlar gösterge niteliğindedir. Özel gereksinimler ve ek talepler doğrultusunda
+        değişiklik gösterebilir.
+    </div>
+
+    <div class="footer">
+        <p>Bu belge otomatik olarak oluşturulmuştur.</p>
+        <p>Devir süreciyle ilgili detaylı bilgi için iletişime geçiniz.</p>
+    </div>
+
+</body>
+
+</html>

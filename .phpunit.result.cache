@@ -1,0 +1,1 @@
+{"version":1,"defects":{"Tests\\Feature\\UserRegistrationTest::test_user_can_register_with_cv_and_video_and_files_exist":7},"times":{"Tests\\Feature\\UserRegistrationTest::test_user_can_register_with_cv_and_video":8.397,"Tests\\Feature\\UserRegistrationTest::test_user_can_register_with_cv_and_video_and_files_exist":1.753}}

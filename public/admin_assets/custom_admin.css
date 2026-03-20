@@ -1,0 +1,203 @@
+/* ========================================
+   MODERN ADMIN PANEL STYLES
+   ======================================== */
+
+/* Top Header */
+.page-header.navbar {
+    background: #1e293b !important;
+    border: none !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+}
+
+.page-header .page-logo {
+    background: #1e293b !important;
+}
+
+/* Sidebar */
+.page-sidebar {
+    background: #ffffff !important;
+    border-right: 1px solid #e5e7eb !important;
+}
+
+.page-sidebar-menu > li > a > i,
+.page-sidebar-menu .sub-menu li a > i {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: inline-block !important;
+    color: #3b82f6 !important;
+}
+
+/* Breadcrumb / Page Bar */
+.page-bar {
+    background: #ffffff !important;
+    padding: 15px 20px !important;
+    margin: 0 0 25px 0 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04) !important;
+    border: 1px solid #e5e7eb !important;
+}
+
+/* Page Title */
+.page-title {
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
+}
+
+/* Content Area */
+.page-content {
+    background: #f8fafc !important;
+}
+
+/* Portlet / Card Boxes */
+.portlet {
+    background: #ffffff !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.04) !important;
+    border: 1px solid #e5e7eb !important;
+}
+
+.portlet > .portlet-title {
+    background: transparent !important;
+    border-bottom: 1px solid #f1f5f9 !important;
+    padding: 20px 25px !important;
+}
+
+.portlet > .portlet-title > .caption {
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
+}
+
+.portlet > .portlet-body {
+    padding: 20px !important;
+}
+
+/* Tables */
+.table {
+    width: 100% !important;
+}
+
+.table > tbody > tr:hover > td {
+    background: #f8fafc !important;
+}
+
+/* Tüm Tablo Hücreleri Dikey Ortalama */
+.table td,
+.table th,
+table td,
+table th {
+    vertical-align: middle !important;
+}
+
+/* İşlemler Sütunu - Tam Ortalama */
+.table th:last-child,
+.table td:last-child,
+table th:last-child,
+table td:last-child {
+    text-align: center !important;
+    vertical-align: middle !important;
+    padding: 12px 10px !important;
+}
+
+/* Btn Group ve Btn - TAM ORTALAMA (Bootstrap override) */
+.table td:last-child .btn-group,
+.table td:last-child .btn,
+table td:last-child .btn-group,
+table td:last-child .btn,
+.dataTable td:last-child .btn-group,
+.dataTable td:last-child .btn {
+    display: inline-block !important;
+    float: none !important;
+    margin: 0 !important;
+    vertical-align: middle !important;
+}
+
+/* Bootstrap btn-group > .btn float:left override */
+.table td:last-child .btn-group > .btn,
+table td:last-child .btn-group > .btn,
+.dataTable td:last-child .btn-group > .btn {
+    float: none !important;
+}
+
+.btn-group,
+td .btn-group,
+.table td .btn-group {
+    display: inline-block !important;
+    float: none !important;
+    margin: 0 !important;
+    vertical-align: middle !important;
+}
+
+/* Action Buttons */
+.btn {
+    border-radius: 6px !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    padding: 8px 14px !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%) !important;
+    border: none !important;
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+    border: none !important;
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+    border: none !important;
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%) !important;
+    border: none !important;
+    color: #fff !important;
+}
+
+/* Form Controls */
+.form-control {
+    border-radius: 6px !important;
+    border: 1px solid #d1d5db !important;
+    padding: 8px 12px !important;
+    font-size: 14px !important;
+    height: auto !important;
+    background-color: #fff !important;
+}
+
+.form-control:focus {
+    border-color: #3b82f6 !important;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15) !important;
+}
+
+/* Filtre satırı */
+.filter td {
+    padding: 8px 5px !important;
+}
+
+.filter .form-control {
+    width: 100% !important;
+}
+
+/* DataTables */
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%) !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 6px !important;
+}
+
+/* Footer */
+.page-footer {
+    background: #1e293b !important;
+    color: #94a3b8 !important;
+}
+
+.page-footer .page-footer-inner {
+    color: #94a3b8 !important;
+}
