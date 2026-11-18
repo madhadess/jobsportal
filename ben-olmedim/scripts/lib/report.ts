@@ -16,8 +16,8 @@ export type ValidationIssue = { level: "error" | "warn"; msg: string };
 export function validateEpisode(ep: EpisodeSpec, m?: EpisodeManifest): ValidationIssue[] {
   const issues: ValidationIssue[] = [];
   const words = ep.scenes.flatMap((s) => s.lines).reduce((a, l) => a + l.text.split(/\s+/).length, 0);
-  if (words < 60) issues.push({ level: "warn", msg: `Konuşma ${words} kelime — çok kısa (hedef 90–140)` });
-  if (words > 150) issues.push({ level: "warn", msg: `Konuşma ${words} kelime — 60 sn'yi aşabilir` });
+  if (words < 55) issues.push({ level: "warn", msg: `Konuşma ${words} kelime — çok kısa (ölçülen anlatım hızıyla hedef 60–100)` });
+  if (words > 110) issues.push({ level: "warn", msg: `Konuşma ${words} kelime — 60 sn'yi aşabilir` });
   if (!ep.scenes.length) issues.push({ level: "error", msg: "Sahne yok" });
   ep.scenes.forEach((s, i) => {
     if (!s.media && !s.insert) issues.push({ level: "warn", msg: `Sahne ${i + 1}: ne medya ne prosedürel katman var` });

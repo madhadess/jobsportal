@@ -1,7 +1,8 @@
 import { ACT1 } from "./episodes/act1";
+import { ACT2 } from "./episodes/act2";
 import type { EpisodeSpec } from "./types";
 
-export const EPISODES: EpisodeSpec[] = [...ACT1].sort((a, b) => a.number - b.number);
+export const EPISODES: EpisodeSpec[] = [...ACT1, ...ACT2].sort((a, b) => a.number - b.number);
 
 export const getEpisode = (n: number): EpisodeSpec => {
   const ep = EPISODES.find((e) => e.number === n);
