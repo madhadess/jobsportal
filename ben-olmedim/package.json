@@ -1,0 +1,35 @@
+{
+  "name": "ben-olmedim",
+  "version": "1.0.0",
+  "private": true,
+  "description": "BEN ÖLMEDİM — 30 bölümlük sinematik korku dizisi üretim hattı (Remotion + Türkçe TTS)",
+  "scripts": {
+    "setup:voices": "bash scripts/setup-voices.sh",
+    "sfx": "python3 scripts/sfx/generate_sfx.py public/audio/sfx",
+    "validate": "tsx scripts/cli.ts validate",
+    "prepare:ep": "tsx scripts/cli.ts prepare",
+    "media": "tsx scripts/cli.ts media",
+    "render": "tsx scripts/cli.ts render",
+    "build:ep": "tsx scripts/cli.ts build",
+    "report": "tsx scripts/cli.ts report",
+    "studio": "remotion studio src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@remotion/bundler": "^4.0.545",
+    "@remotion/cli": "^4.0.545",
+    "@remotion/noise": "^4.0.545",
+    "@remotion/renderer": "^4.0.545",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "remotion": "^4.0.545"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.30",
+    "@types/react": "^19.1.8",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  }
+}

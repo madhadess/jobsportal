@@ -1,0 +1,68 @@
+[
+  {
+    "episode": 1,
+    "scene": "e01s02",
+    "type": "video",
+    "target": "public/media/e01/e01s02.mp4",
+    "seconds": 5,
+    "prompt": "medium shot, barely perceptible drift. Aras sits motionless on the edge of a single bed in the dark, lit only by the cold blue glow of the phone in his hands, unpacked moving boxes around him, his breath visible in the cold room, camera slowly drifts closer. Characters: Aras = 28-year-old Turkish man, lean build, pale olive skin, dark tousled hair slightly long on top, short dark stubble, deep-set dark brown eyes with dark circles, thin straight nose, narrow jaw, a small pale scar above the left eyebrow, wearing charcoal grey hoodie over a faded black t-shirt, dark jeans, barefoot or worn grey socks. Location: cramped old Turkish bedroom, single bed with grey blanket, yellowed plaster walls with hairline cracks, old wooden wardrobe, bare bulb, moving boxes, cold moonlight. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 5 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/characters/aras.png",
+      "refs/locations/daire7-yatak.png"
+    ],
+    "missingReferences": [
+      "refs/characters/aras.png",
+      "refs/locations/daire7-yatak.png"
+    ]
+  },
+  {
+    "episode": 1,
+    "scene": "e01s04",
+    "type": "video",
+    "target": "public/media/e01/e01s04.mp4",
+    "seconds": 10,
+    "prompt": "close-up, very slow creeping push-in. Close-up of Aras holding the phone to his ear in the dark, listening, the phone light on his cheek, his eyes slowly narrow in disbelief, extremely slow push-in. Characters: Aras = 28-year-old Turkish man, lean build, pale olive skin, dark tousled hair slightly long on top, short dark stubble, deep-set dark brown eyes with dark circles, thin straight nose, narrow jaw, a small pale scar above the left eyebrow, wearing charcoal grey hoodie over a faded black t-shirt, dark jeans, barefoot or worn grey socks. Location: cramped old Turkish bedroom, single bed with grey blanket, yellowed plaster walls with hairline cracks, old wooden wardrobe, bare bulb, moving boxes, cold moonlight. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 10 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/characters/aras.png",
+      "refs/locations/daire7-yatak.png"
+    ],
+    "missingReferences": [
+      "refs/characters/aras.png",
+      "refs/locations/daire7-yatak.png"
+    ]
+  },
+  {
+    "episode": 1,
+    "scene": "e01s05",
+    "type": "video",
+    "target": "public/media/e01/e01s05.mp4",
+    "seconds": 8,
+    "prompt": "extreme close-up, subtle controlled handheld tremor. Extreme close-up of Aras's eyes lit by phone light, pupils dilating as he replays the message, the dark hallway behind him out of focus, subtle handheld tremor. Characters: Aras = 28-year-old Turkish man, lean build, pale olive skin, dark tousled hair slightly long on top, short dark stubble, deep-set dark brown eyes with dark circles, thin straight nose, narrow jaw, a small pale scar above the left eyebrow, wearing charcoal grey hoodie over a faded black t-shirt, dark jeans, barefoot or worn grey socks. Location: cramped old Turkish bedroom, single bed with grey blanket, yellowed plaster walls with hairline cracks, old wooden wardrobe, bare bulb, moving boxes, cold moonlight. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 8 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/characters/aras.png",
+      "refs/locations/daire7-yatak.png"
+    ],
+    "missingReferences": [
+      "refs/characters/aras.png",
+      "refs/locations/daire7-yatak.png"
+    ]
+  },
+  {
+    "episode": 1,
+    "scene": "e01s08",
+    "type": "video",
+    "target": "public/media/e01/e01s08.mp4",
+    "seconds": 7,
+    "prompt": "first-person POV shot, very slow creeping push-in. POV slowly walking down a dark narrow hallway toward an old dark-brown wooden apartment door with a brass peephole, a strip of yellow corridor light under the door broken by the shadow of two feet standing still. Location: inside view of an old dark-brown wooden Turkish apartment front door with a brass peephole and a chain lock, a thin strip of yellow corridor light under the door, a narrow hallway with a coat hook. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 7 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/locations/daire7-kapi.png"
+    ],
+    "missingReferences": [
+      "refs/locations/daire7-kapi.png"
+    ]
+  }
+]

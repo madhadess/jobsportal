@@ -1,0 +1,10 @@
+node_modules/
+models/
+out/*.mp4
+.cache/
+public/audio/vo/
+public/manifests/*.json
+!public/manifests/.gitkeep
+*.raw.wav
+.env
+public/audio/sfx/
