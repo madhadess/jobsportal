@@ -2,7 +2,7 @@
 
 | # | Bölüm | Sahne | Replik | Süre | AI medya | MP4 |
 |---|---|---|---|---|---|---|
-| 1 | [YARINDAN GELEN SES](e01.md) | 8 | 7 | 52.13 sn | 0/4 | 🎞️ animatik |
+| 1 | [YARINDAN GELEN SES](e01.md) | 8 | 7 | 52.13 sn | 0/4 | — |
 | 2 | [KAPIDAKİ BEN](e02.md) | 6 | 8 | 48.5 sn | 0/4 | — |
 | 3 | [GÜVENLİK KAMERASI](e03.md) | 5 | 6 | 49.6 sn | 0/2 | — |
 | 4 | [13 NUMARALI DAİRE](e04.md) | 5 | 7 | 45.97 sn | 0/2 | — |
