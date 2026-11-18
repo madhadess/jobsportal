@@ -186,12 +186,18 @@ export const Peephole: React.FC<{ ins: PeepholeInsert }> = ({ ins }) => {
                 <g transform={`translate(470 ${ins.figure === "child" ? 860 : 990}) scale(${lean}) translate(-470 ${ins.figure === "child" ? -860 : -990})`}>
                   <Silhouette x={470 + noise2D("pf", f / 70, 0) * 6} y={ins.figure === "child" ? 860 : 990} h={ins.figure === "child" ? 520 : 820} child={ins.figure === "child"} fill="#120c07" blur={2} />
                   {ins.figure === "arasKanli" && (
-                    <g style={{ filter: "blur(2px)" }}>
-                      {/* yüz ışığı ve kan izleri */}
-                      <ellipse cx={470} cy={240} rx={52} ry={62} fill="rgba(170,140,110,0.55)" />
-                      <path d="M 445 185 Q 440 230 450 290 M 478 182 Q 490 240 482 300 M 500 200 Q 505 240 498 262" stroke="#6e0c0a" strokeWidth={9} fill="none" />
-                      <ellipse cx={452} cy={236} rx={8} ry={4} fill="#120808" />
-                      <ellipse cx={490} cy={236} rx={8} ry={4} fill="#120808" />
+                    <g>
+                      {/* koridor ışığında yarı görünen yüz, saç çizgisinden süzülen koyu kan */}
+                      <ellipse cx={470} cy={238} rx={46} ry={58} fill="rgba(140,110,85,0.42)" style={{ filter: "blur(6px)" }} />
+                      <g style={{ filter: "blur(3.5px)" }} opacity={0.85}>
+                        <path d="M 448 188 Q 444 232 452 286" stroke="#3c0605" strokeWidth={10} fill="none" />
+                        <path d="M 482 186 Q 490 236 484 270" stroke="#3c0605" strokeWidth={7} fill="none" />
+                        <path d="M 440 190 Q 470 175 500 192" stroke="#2a0403" strokeWidth={14} fill="none" />
+                      </g>
+                      <g style={{ filter: "blur(1.5px)" }}>
+                        <ellipse cx={454} cy={236} rx={7} ry={3.5} fill="#0d0605" />
+                        <ellipse cx={488} cy={236} rx={7} ry={3.5} fill="#0d0605" />
+                      </g>
                     </g>
                   )}
                 </g>
@@ -405,9 +411,22 @@ export const Wall: React.FC<{ ins: WallInsert }> = ({ ins }) => {
           </g>
         )}
         {ins.hand && (
-          <g transform={`translate(540 ${1050 - handOut * 60}) scale(${0.6 + handOut * 0.6})`} style={{ filter: "blur(1.5px)" }}>
-            <path d="M -60 120 L -50 -10 Q -48 -40 -30 -42 L -28 -110 Q -26 -130 -12 -128 Q 0 -126 0 -108 L 2 -50 L 6 -140 Q 8 -158 22 -156 Q 36 -154 34 -136 L 30 -48 L 40 -122 Q 44 -138 58 -134 Q 70 -130 66 -112 L 56 -40 L 70 -90 Q 76 -104 88 -98 Q 98 -92 92 -76 L 70 20 Q 60 80 40 120 Z" fill="#b9b1a0" />
-            <path d="M -60 120 L -50 -10 Q -48 -40 -30 -42" stroke="#6d665a" strokeWidth={4} fill="none" />
+          <g transform={`translate(540 ${1060 - handOut * 50}) scale(${0.5 + handOut * 0.45}) rotate(-8)`}>
+            <defs>
+              <radialGradient id="skin" cx="0.45" cy="0.3" r="0.8">
+                <stop offset="0" stopColor="#a39a8c" />
+                <stop offset="0.6" stopColor="#6e675d" />
+                <stop offset="1" stopColor="#2a2622" />
+              </radialGradient>
+            </defs>
+            <g style={{ filter: "blur(2.6px)" }}>
+              <path d="M -60 160 L -52 -6 Q -50 -36 -32 -40 L -30 -104 Q -28 -124 -14 -122 Q -2 -120 -2 -102 L 0 -48 L 4 -128 Q 6 -146 20 -144 Q 34 -142 32 -124 L 28 -46 L 38 -112 Q 42 -128 56 -124 Q 68 -120 64 -102 L 54 -36 L 66 -80 Q 72 -94 84 -88 Q 94 -82 88 -66 L 68 24 Q 58 90 40 160 Z" fill="url(#skin)" />
+              <path d="M -30 -40 Q -10 -30 10 -36 M 0 -48 Q 14 -40 28 -46" stroke="#3a342d" strokeWidth={3} fill="none" opacity={0.6} />
+              {[[-16, -118], [18, -140], [52, -118], [80, -84]].map(([x, y], i) => (
+                <ellipse key={i} cx={x} cy={y + 6} rx={6} ry={5} fill="#2c2620" opacity={0.85} />
+              ))}
+            </g>
+            <ellipse cx={0} cy={60} rx={90} ry={140} fill="#000" opacity={0.35} style={{ filter: "blur(30px)" }} />
           </g>
         )}
       </svg>

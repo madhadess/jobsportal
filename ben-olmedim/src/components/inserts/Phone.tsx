@@ -222,7 +222,7 @@ export const Phone: React.FC<{ ins: PhoneInsert }> = ({ ins }) => {
       <AbsoluteFill style={{ background: "radial-gradient(ellipse 70% 45% at 50% 52%, rgba(70,110,160,0.38), rgba(10,20,30,0.15) 55%, rgba(0,0,0,0) 75%)", opacity: wake }} />
       <AbsoluteFill style={{ background: "repeating-linear-gradient(92deg, rgba(60,40,25,0.10) 0 3px, rgba(0,0,0,0) 3px 11px)", opacity: 0.6 * wake }} />
       <Dust count={45} seed="phone-dust" color="rgba(160,200,255,0.5)" area={[140, 120, 800, 1600]} />
-      <AbsoluteFill style={{ perspective: 2200, alignItems: "center", justifyContent: "center", transform: `scale(${ins.zoom ?? 1})`, transformOrigin: "50% 28%" }}>
+      <AbsoluteFill style={{ perspective: 2200, alignItems: "center", justifyContent: "center", transform: `scale(${ins.zoom ?? 1})`, transformOrigin: "34% 27%" }}>
         <div
           style={{
             width: W,

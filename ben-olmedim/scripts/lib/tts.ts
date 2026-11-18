@@ -4,11 +4,18 @@ import { execFileSync } from "node:child_process";
 import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
-import { VOICES } from "../../src/series/bible";
+import { NC_VOICE_OVERRIDES, VOICES, type VoiceProfile } from "../../src/series/bible";
 import type { EpisodeSpec, SpeakerId } from "../../src/series/types";
 import { CACHE_DIR, ROOT, VO_DIR, pub } from "./paths";
 
 export type VoiceResult = { src: string; seconds: number };
+
+/** Etkin ses profili: varsayılan CC0; TTS_ALLOW_NC=1 ise ticari olmayan lisanslı sesler devreye girer. */
+export function profileFor(speaker: SpeakerId): VoiceProfile {
+  const base = VOICES[speaker];
+  const nc = process.env.TTS_ALLOW_NC === "1" ? NC_VOICE_OVERRIDES[speaker] : undefined;
+  return nc ? { ...base, ...nc } : base;
+}
 
 /** Piper'ın Türkçe telaffuzunu iyileştiren küçük metin düzeltmeleri. */
 export function normalizeForTts(text: string): string {
@@ -21,7 +28,7 @@ export function normalizeForTts(text: string): string {
 }
 
 export function voiceKey(speaker: SpeakerId, text: string): string {
-  const p = VOICES[speaker];
+  const p = profileFor(speaker);
   return crypto.createHash("sha1").update(JSON.stringify({ v: 4, p, text })).digest("hex").slice(0, 16);
 }
 
@@ -31,7 +38,7 @@ export function probeSeconds(file: string): number {
 }
 
 function filterChain(speaker: SpeakerId): string {
-  const p = VOICES[speaker];
+  const p = profileFor(speaker);
   const f: string[] = [];
   // sessiz baş/sonları kırp
   f.push("silenceremove=start_periods=1:start_threshold=-48dB:start_silence=0.02");
@@ -64,7 +71,7 @@ export async function synthesizeEpisode(ep: EpisodeSpec, opts: { force?: boolean
   if (pending.length) {
     log(`  TTS: ${pending.length}/${jobs.length} replik sentezleniyor (Piper)…`);
     const spec = pending.map((j) => {
-      const p = VOICES[j.speaker];
+      const p = profileFor(j.speaker);
       return { text: normalizeForTts(j.text), voice: p.voice, lengthScale: p.lengthScale, noiseScale: p.noiseScale ?? 0.667, noiseW: p.noiseW ?? 0.8, sentencePause: p.sentencePause ?? 0.4, out: j.raw };
     });
     const specFile = path.join(CACHE_DIR, `tts-${ep.number}.json`);

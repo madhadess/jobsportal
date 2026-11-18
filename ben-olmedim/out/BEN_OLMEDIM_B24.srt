@@ -63,9 +63,9 @@ Hepimiz aynı anda durduk.
 İçeriden bir çocuk konuştu.
 
 17
-00:00:38,367 --> 00:00:39,967
+00:00:38,367 --> 00:00:39,867
 Hepiniz geldiniz.
 
 18
-00:00:39,967 --> 00:00:43,067
+00:00:39,867 --> 00:00:42,767
 Ama ben sadece birini bekliyorum.

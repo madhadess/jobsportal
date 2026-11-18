@@ -6,17 +6,24 @@
 //   npm run render -- 1 [--final] [--no-subs] [--clean]
 //   npm run build:ep -- all          → prepare + media + render (toplu)
 //   npm run report                   → tüm bölümlerin durum tablosu (reports/README.md)
+//   npm run screenplay               → okunabilir sezon senaryosu (reports/SENARYO.md)
 import fs from "node:fs";
 import path from "node:path";
 import { buildManifest, toSrt } from "../src/pipeline/timeline";
 import { EPISODES, getEpisode } from "../src/series";
-import { SERIES } from "../src/series/bible";
+import { SERIES, VOICES } from "../src/series/bible";
 import type { EpisodeManifest, SfxId } from "../src/series/types";
 import { configuredProvider, findSceneMedia, resolveEpisodeMedia } from "./lib/media";
-import { MANIFEST_DIR, OUT_DIR, REPORT_DIR, SFX_DIR } from "./lib/paths";
+import { MANIFEST_DIR, OUT_DIR, REPORT_DIR, ROOT, SFX_DIR } from "./lib/paths";
 import { renderEpisode } from "./lib/render";
 import { validateEpisode, writeMissingIndex, writeReport } from "./lib/report";
 import { probeSeconds, synthesizeEpisode } from "./lib/tts";
+
+try {
+  process.loadEnvFile(path.join(ROOT, ".env"));
+} catch {
+  /* .env isteğe bağlı */
+}
 
 const args = process.argv.slice(2);
 const cmd = args[0];
@@ -68,6 +75,25 @@ async function prepare(n: number, generateMedia: boolean): Promise<EpisodeManife
   log(`  rapor: ${path.relative(process.cwd(), report)} · eksik medya listesi: ${path.relative(process.cwd(), missing.file)}`);
   if (issues.some((i) => i.level === "error")) process.exitCode = 1;
   return manifest;
+}
+
+/** Tüm sezonun okunabilir senaryo metni: reports/SENARYO.md */
+function screenplay() {
+  const L: string[] = ["# BEN ÖLMEDİM — Sezon 1 Senaryosu", "", "_Bu dosya `src/series/episodes/*.ts` verisinden üretilir (`npm run screenplay`). Düzenlemeyi veride yapın._", ""];
+  for (const ep of EPISODES) {
+    L.push(`## Bölüm ${ep.number} — ${ep.title}`, "", `> ${ep.logline}`, "", `- **Hikâye zamanı:** ${ep.storyTime}`, `- **Devamı:** ${ep.continuesFrom}`, `- **İlk 3 sn:** ${ep.hook}`, `- **Yeni bilgi:** ${ep.revelation}`, `- **Son 5 sn:** ${ep.cliffhanger}`, "");
+    ep.scenes.forEach((s, i) => {
+      L.push(`**SAHNE ${i + 1} — ${s.title.toLocaleUpperCase("tr")}** _(${s.shot} · ${s.camera}${s.silence ? " · ortam sesi kesilir" : ""})_`, "", s.visual, "");
+      for (const l of s.lines) L.push(`> **${VOICES[l.speaker].label.toLocaleUpperCase("tr")}:** ${l.text}`, ">");
+      if (s.lines.length) L.pop();
+      if (s.sfx.length) L.push("", `_Ses: ${s.sfx.map((c) => c.id).join(", ")}_`);
+      L.push("");
+    });
+    L.push(ep.number < SERIES.episodes ? `_DEVAM EDECEK — BÖLÜM ${ep.number + 1}_` : "_SEZON SONU_", "", "---", "");
+  }
+  fs.mkdirSync(REPORT_DIR, { recursive: true });
+  fs.writeFileSync(path.join(REPORT_DIR, "SENARYO.md"), L.join("\n"));
+  log(`reports/SENARYO.md yazıldı (${EPISODES.length} bölüm)`);
 }
 
 function statusTable() {
@@ -135,8 +161,11 @@ async function main() {
     case "report":
       statusTable();
       break;
+    case "screenplay":
+      screenplay();
+      break;
     default:
-      log("Komutlar: validate | prepare <n> | media <n> | render <n> | build <n|a-b|all> | report");
+      log("Komutlar: validate | prepare <n> | media <n> | render <n> | build <n|a-b|all> | report | screenplay");
   }
 }
 

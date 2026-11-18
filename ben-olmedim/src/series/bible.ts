@@ -254,6 +254,20 @@ export const VISUAL_STYLE = {
     "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
 } as const;
 
+/**
+ * Ses lisansları (models/voices/<ses>/MODEL_CARD):
+ *   tr_TR-fahrettin-medium  CC0            → ticari kullanım serbest
+ *   tr_TR-fettah-medium     CC0            → ticari kullanım serbest
+ *   tr_TR-dfki-medium       CC BY-NC-SA 4.0 → TİCARİ KULLANIM YASAK
+ * Varsayılan profiller yalnızca CC0 sesleri kullanır (kadın/çocuk sesleri perde kaydırmayla türetilir).
+ * Gerçek kadın sesi istenirse ve kullanım ticari değilse TTS_ALLOW_NC=1 ile NC_VOICE_OVERRIDES devreye girer.
+ */
+export const VOICE_LICENSES = {
+  "tr_TR-fahrettin-medium": "CC0",
+  "tr_TR-fettah-medium": "CC0",
+  "tr_TR-dfki-medium": "CC BY-NC-SA 4.0 (ticari kullanım yasak)",
+} as const;
+
 /** Ses profilleri: Piper modeli + ffmpeg filtre zinciri. */
 export type VoiceProfile = {
   voice: "tr_TR-fahrettin-medium" | "tr_TR-fettah-medium" | "tr_TR-dfki-medium";
@@ -281,10 +295,17 @@ export const VOICES: Record<SpeakerId, VoiceProfile> = {
   arasKapi: { voice: "tr_TR-fahrettin-medium", lengthScale: 1.4, sentencePause: 0.7, noiseScale: 0.4, pitch: 0.86, filters: DOOR_MUFFLE, gainDb: 0, label: "Kapıdaki Aras" },
   yansima: { voice: "tr_TR-fahrettin-medium", lengthScale: 1.45, sentencePause: 0.6, noiseScale: 0.4, pitch: 0.84, filters: ["aecho=0.8:0.7:90|180:0.35|0.25", "lowpass=f=5000"], gainDb: 0, label: "Yansıma" },
   arasYasli: { voice: "tr_TR-fettah-medium", lengthScale: 1.35, sentencePause: 0.6, noiseScale: 0.5, pitch: 0.88, filters: [...ROOM_VERB], gainDb: 0, label: "Yaşlı Aras" },
-  cocuk: { voice: "tr_TR-dfki-medium", lengthScale: 1.3, sentencePause: 0.55, noiseScale: 0.45, pitch: 1.24, filters: ["aecho=0.8:0.75:60|130:0.3|0.2", "lowpass=f=6500"], gainDb: -1, label: "Çocuk (13)" },
-  baba: { voice: "tr_TR-fettah-medium", lengthScale: 1.25, sentencePause: 0.5, noiseScale: 0.55, pitch: 0.9, filters: [...ROOM_VERB], gainDb: 0, label: "Kemal Yalçın (baba)" },
-  babaTelefon: { voice: "tr_TR-fettah-medium", lengthScale: 1.25, sentencePause: 0.5, noiseScale: 0.55, pitch: 0.9, filters: PHONE_BAND, gainDb: 0, label: "Baba (telefon/kayıt)" },
-  anneTelefon: { voice: "tr_TR-dfki-medium", lengthScale: 1.18, sentencePause: 0.45, noiseScale: 0.6, pitch: 0.97, filters: PHONE_BAND, gainDb: 0, label: "Selma Yalçın (telefon)" },
-  nermin: { voice: "tr_TR-dfki-medium", lengthScale: 1.35, sentencePause: 0.5, noiseScale: 0.45, pitch: 0.9, filters: ["tremolo=f=5:d=0.12", ...ROOM_VERB], gainDb: 0, label: "Nermin Hanım" },
+  cocuk: { voice: "tr_TR-fettah-medium", lengthScale: 1.2, sentencePause: 0.55, noiseScale: 0.45, pitch: 1.36, filters: ["aecho=0.8:0.75:60|130:0.3|0.2", "lowpass=f=6500"], gainDb: -1, label: "Çocuk (13)" },
+  baba: { voice: "tr_TR-fettah-medium", lengthScale: 1.25, sentencePause: 0.5, noiseScale: 0.55, pitch: 0.82, filters: [...ROOM_VERB], gainDb: 0, label: "Kemal Yalçın (baba)" },
+  babaTelefon: { voice: "tr_TR-fettah-medium", lengthScale: 1.25, sentencePause: 0.5, noiseScale: 0.55, pitch: 0.82, filters: PHONE_BAND, gainDb: 0, label: "Baba (telefon/kayıt)" },
+  anneTelefon: { voice: "tr_TR-fettah-medium", lengthScale: 1.15, sentencePause: 0.45, noiseScale: 0.6, pitch: 1.22, filters: PHONE_BAND, gainDb: 0, label: "Selma Yalçın (telefon)" },
+  nermin: { voice: "tr_TR-fettah-medium", lengthScale: 1.32, sentencePause: 0.5, noiseScale: 0.45, pitch: 1.15, filters: ["tremolo=f=5:d=0.12", ...ROOM_VERB], gainDb: 0, label: "Nermin Hanım" },
   memur: { voice: "tr_TR-fettah-medium", lengthScale: 1.1, sentencePause: 0.35, noiseScale: 0.6, pitch: 1.0, filters: ["aecho=0.8:0.4:20|40:0.1|0.06"], gainDb: 0, label: "Memur" },
+};
+
+/** Yalnızca TTS_ALLOW_NC=1 iken kullanılan, ticari olmayan lisanslı (dfki) kadın/çocuk sesleri. */
+export const NC_VOICE_OVERRIDES: Partial<Record<SpeakerId, Partial<VoiceProfile>>> = {
+  cocuk: { voice: "tr_TR-dfki-medium", lengthScale: 1.3, pitch: 1.24 },
+  anneTelefon: { voice: "tr_TR-dfki-medium", lengthScale: 1.18, pitch: 0.97 },
+  nermin: { voice: "tr_TR-dfki-medium", lengthScale: 1.35, pitch: 0.9 },
 };

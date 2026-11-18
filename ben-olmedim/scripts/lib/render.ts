@@ -66,7 +66,17 @@ export async function renderEpisode(
   // platform standardı ses: -14 LUFS, gerçek tepe -1.5 dBTP (video yeniden kodlanmaz)
   const tmp = out.replace(/\.mp4$/, ".tmp.mp4");
   fs.renameSync(out, tmp);
-  execFileSync("ffmpeg", ["-y", "-v", "error", "-i", tmp, "-c:v", "copy", "-af", "loudnorm=I=-14:TP=-1.5:LRA=11,aresample=48000", "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", out]);
+  // iki geçişli loudnorm: önce ölç, sonra doğrusal uygula (dinamikleri ezmeden hedefe oturur)
+  const probe = execFileSync("ffmpeg", ["-hide_banner", "-i", tmp, "-af", "loudnorm=I=-14:TP=-1.5:LRA=11:print_format=json", "-f", "null", "-"], { stdio: ["ignore", "ignore", "pipe"] }).toString();
+  let af = "loudnorm=I=-14:TP=-1.5:LRA=11";
+  const json = probe.slice(probe.lastIndexOf("{"), probe.lastIndexOf("}") + 1);
+  try {
+    const m = JSON.parse(json) as Record<string, string>;
+    af += `:measured_I=${m.input_i}:measured_TP=${m.input_tp}:measured_LRA=${m.input_lra}:measured_thresh=${m.input_thresh}:offset=${m.target_offset}:linear=true`;
+  } catch {
+    /* ölçüm okunamazsa tek geçiş */
+  }
+  execFileSync("ffmpeg", ["-y", "-v", "error", "-i", tmp, "-c:v", "copy", "-af", `${af},aresample=48000`, "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", out]);
   fs.unlinkSync(tmp);
   opts.log(`  ✓ ${path.relative(process.cwd(), out)} (${((Date.now() - t0) / 1000).toFixed(0)} sn)`);
   return out;

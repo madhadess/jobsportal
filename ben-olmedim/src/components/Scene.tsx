@@ -160,7 +160,7 @@ export const SceneView: React.FC<{ scene: ManifestScene; draftBadges: boolean }>
       </AbsoluteFill>
       <TransitionIn kind={scene.transitionIn} />
       {draftBadges && scene.mediaMissing && (
-        <div style={{ position: "absolute", top: 70, right: 50, padding: "8px 16px", borderRadius: 8, background: "rgba(0,0,0,0.55)", border: "1px solid rgba(255,255,255,0.25)", fontFamily: MONO, fontSize: 22, color: "rgba(255,255,255,0.75)" }}>
+        <div style={{ position: "absolute", bottom: 70, left: "50%", transform: "translateX(-50%)", whiteSpace: "nowrap", padding: "8px 16px", borderRadius: 8, background: "rgba(0,0,0,0.55)", border: "1px solid rgba(255,255,255,0.25)", fontFamily: MONO, fontSize: 22, color: "rgba(255,255,255,0.75)" }}>
           ANİMATİK · {scene.id} · AI klip bekleniyor
         </div>
       )}

@@ -14,7 +14,10 @@
     "report": "tsx scripts/cli.ts report",
     "studio": "remotion studio src/index.ts",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run"
+    "test": "vitest run",
+    "screenplay": "tsx scripts/cli.ts screenplay",
+    "setup": "npm run setup:voices && npm run sfx",
+    "python:deps": "pip install piper-tts numpy soundfile"
   },
   "dependencies": {
     "@remotion/bundler": "^4.0.545",

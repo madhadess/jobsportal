@@ -26,8 +26,8 @@ export const Document: React.FC<{ ins: DocumentInsert }> = ({ ins }) => {
   if (ins.variant === "blueprint") {
     return (
       <AbsoluteFill style={{ background: "#0a1a33" }}>
-        <AbsoluteFill style={{ background: "#1c3d6e", backgroundImage: "linear-gradient(rgba(255,255,255,0.08) 2px, transparent 2px), linear-gradient(90deg, rgba(255,255,255,0.08) 2px, transparent 2px)", backgroundSize: "60px 60px", transform: "rotate(-3deg) scale(1.1)" }}>
-          <div style={{ position: "absolute", top: 260, left: 120, right: 120, fontFamily: MONO, color: "#dce8ff", fontSize: 34 }}>{ins.heading}</div>
+        <AbsoluteFill style={{ background: "#1c3d6e", backgroundImage: "linear-gradient(rgba(255,255,255,0.08) 2px, transparent 2px), linear-gradient(90deg, rgba(255,255,255,0.08) 2px, transparent 2px)", backgroundSize: "60px 60px", transform: "rotate(-2deg) scale(1.04)" }}>
+          <div style={{ position: "absolute", top: 290, left: 150, right: 150, fontFamily: MONO, color: "#dce8ff", fontSize: 30, lineHeight: 1.3 }}>{ins.heading}</div>
           <div style={{ position: "absolute", top: 400, left: 140, width: 800, height: 900, border: "6px solid #dce8ff", display: "grid", gridTemplateColumns: "1fr 1fr", gridTemplateRows: "1fr 0.35fr 1fr" }}>
             {ins.lines.slice(0, 4).map((l, i) => (
               <div key={l} style={{ border: "3px solid rgba(220,232,255,0.8)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: MONO, color: "#dce8ff", fontSize: 40, gridRow: i < 2 ? 1 : 3 }}>

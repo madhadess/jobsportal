@@ -1,6 +1,7 @@
 // Bölüm kompozisyonu: manifestteki sahneler + seslendirme + efekt + ortam sesi + altyazı + kapanış kartı.
 import React from "react";
 import { AbsoluteFill, Audio, Sequence, interpolate, staticFile, useCurrentFrame } from "remotion";
+import { ambienceSegments } from "../pipeline/audio";
 import type { AmbienceId, EpisodeManifest, SubtitleCue } from "../series/types";
 import { ColorGrade, FilmGrain, MONO, SANS, SERIF, Vignette, ensureFonts } from "./fx";
 import { SceneView } from "./Scene";
@@ -22,30 +23,6 @@ const AMB_GAIN: Record<AmbienceId, number> = {
   rain: 0.25,
   cityMorning: 0.25,
 };
-
-type AmbSegment = { id: AmbienceId; from: number; to: number };
-
-/** Ardışık sahnelerde süren ortam seslerini tek parça halinde birleştirir (her kesmede yeniden başlamasın). */
-export function ambienceSegments(m: EpisodeManifest): AmbSegment[] {
-  const open = new Map<AmbienceId, AmbSegment>();
-  const done: AmbSegment[] = [];
-  for (const s of m.scenes) {
-    const active = new Set(s.silence ? [] : s.ambience);
-    for (const [id, seg] of open) {
-      if (!active.has(id)) {
-        done.push(seg);
-        open.delete(id);
-      }
-    }
-    for (const id of active) {
-      const seg = open.get(id);
-      if (seg) seg.to = s.from + s.durationInFrames;
-      else open.set(id, { id, from: s.from, to: s.from + s.durationInFrames });
-    }
-  }
-  done.push(...open.values());
-  return done;
-}
 
 const Subtitles: React.FC<{ cues: SubtitleCue[] }> = ({ cues }) => {
   const f = useCurrentFrame();
