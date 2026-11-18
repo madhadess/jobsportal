@@ -1142,5 +1142,709 @@
       "refs/characters/baba.png",
       "refs/locations/cam-bolme.png"
     ]
+  },
+  {
+    "episode": 21,
+    "scene": "e21s02",
+    "type": "video",
+    "target": "public/media/e21/e21s02.mp4",
+    "seconds": 7,
+    "prompt": "medium close-up, barely perceptible drift. The old father in a brown cardigan stands with his back half-turned behind the glass, CRT monitor reflections glowing in his round glasses, speaking calmly and tiredly. Characters: Kemal = 62-year-old Turkish man, thin and slightly stooped, short grey beard, receding grey hair, round wire-rimmed glasses, hollow cheeks, tired grey-brown eyes, wearing worn brown wool cardigan over a white shirt, grey trousers. Location: a thick glass observation partition at the back of the basement control room, a dim room behind it with a single chair and a desk covered in notebooks. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 7 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/characters/baba.png",
+      "refs/locations/cam-bolme.png"
+    ],
+    "missingReferences": [
+      "refs/characters/baba.png",
+      "refs/locations/cam-bolme.png"
+    ]
+  },
+  {
+    "episode": 21,
+    "scene": "e21s04",
+    "type": "video",
+    "target": "public/media/e21/e21s04.mp4",
+    "seconds": 10,
+    "prompt": "over-the-shoulder shot, very slow creeping push-in. Over-the-shoulder from behind the father: Aras steps closer to the glass, his face half lit by green light, jaw clenched. Characters: Aras = 28-year-old Turkish man, lean build, pale olive skin, dark tousled hair slightly long on top, short dark stubble, deep-set dark brown eyes with dark circles, thin straight nose, narrow jaw, a small pale scar above the left eyebrow, wearing charcoal grey hoodie over a faded black t-shirt, dark jeans, barefoot or worn grey socks; Kemal = 62-year-old Turkish man, thin and slightly stooped, short grey beard, receding grey hair, round wire-rimmed glasses, hollow cheeks, tired grey-brown eyes, wearing worn brown wool cardigan over a white shirt, grey trousers. Location: a thick glass observation partition at the back of the basement control room, a dim room behind it with a single chair and a desk covered in notebooks. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 10 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/characters/aras.png",
+      "refs/characters/baba.png",
+      "refs/locations/cam-bolme.png"
+    ],
+    "missingReferences": [
+      "refs/characters/aras.png",
+      "refs/characters/baba.png",
+      "refs/locations/cam-bolme.png"
+    ]
+  },
+  {
+    "episode": 21,
+    "scene": "e21s05",
+    "type": "video",
+    "target": "public/media/e21/e21s05.mp4",
+    "seconds": 13,
+    "prompt": "close-up, slow push-in. Close-up: the father leans to the glass and lowers his voice; behind him one CRT monitor shows a grainy kitchen where a woman with short chestnut hair talks on the phone. Characters: Kemal = 62-year-old Turkish man, thin and slightly stooped, short grey beard, receding grey hair, round wire-rimmed glasses, hollow cheeks, tired grey-brown eyes, wearing worn brown wool cardigan over a white shirt, grey trousers; Selma = 55-year-old Turkish woman, short chestnut hair, reading glasses on a chain, warm but tired face, wearing beige knit sweater. Location: a thick glass observation partition at the back of the basement control room, a dim room behind it with a single chair and a desk covered in notebooks. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 13 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/characters/baba.png",
+      "refs/characters/anne.png",
+      "refs/locations/cam-bolme.png"
+    ],
+    "missingReferences": [
+      "refs/characters/baba.png",
+      "refs/characters/anne.png",
+      "refs/locations/cam-bolme.png"
+    ]
+  },
+  {
+    "episode": 22,
+    "scene": "e22s01",
+    "type": "video",
+    "target": "public/media/e22/e22s01.mp4",
+    "seconds": 8,
+    "prompt": "medium shot, subtle controlled handheld tremor. Aras slams his fist against the thick glass partition, the glass shudders but holds, the old father on the other side does not flinch. Characters: Aras = 28-year-old Turkish man, lean build, pale olive skin, dark tousled hair slightly long on top, short dark stubble, deep-set dark brown eyes with dark circles, thin straight nose, narrow jaw, a small pale scar above the left eyebrow, wearing charcoal grey hoodie over a faded black t-shirt, dark jeans, barefoot or worn grey socks; Kemal = 62-year-old Turkish man, thin and slightly stooped, short grey beard, receding grey hair, round wire-rimmed glasses, hollow cheeks, tired grey-brown eyes, wearing worn brown wool cardigan over a white shirt, grey trousers. Location: a thick glass observation partition at the back of the basement control room, a dim room behind it with a single chair and a desk covered in notebooks. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 8 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/characters/aras.png",
+      "refs/characters/baba.png",
+      "refs/locations/cam-bolme.png"
+    ],
+    "missingReferences": [
+      "refs/characters/aras.png",
+      "refs/characters/baba.png",
+      "refs/locations/cam-bolme.png"
+    ]
+  },
+  {
+    "episode": 22,
+    "scene": "e22s03",
+    "type": "video",
+    "target": "public/media/e22/e22s03.mp4",
+    "seconds": 9,
+    "prompt": "close-up, very slow creeping push-in. Close-up of the old father's face behind the glass with Aras's reflection superimposed on the glass over it, both faces aligned. Characters: Kemal = 62-year-old Turkish man, thin and slightly stooped, short grey beard, receding grey hair, round wire-rimmed glasses, hollow cheeks, tired grey-brown eyes, wearing worn brown wool cardigan over a white shirt, grey trousers; Aras = 28-year-old Turkish man, lean build, pale olive skin, dark tousled hair slightly long on top, short dark stubble, deep-set dark brown eyes with dark circles, thin straight nose, narrow jaw, a small pale scar above the left eyebrow, wearing charcoal grey hoodie over a faded black t-shirt, dark jeans, barefoot or worn grey socks. Location: a thick glass observation partition at the back of the basement control room, a dim room behind it with a single chair and a desk covered in notebooks. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 9 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/characters/baba.png",
+      "refs/characters/aras.png",
+      "refs/locations/cam-bolme.png"
+    ],
+    "missingReferences": [
+      "refs/characters/baba.png",
+      "refs/characters/aras.png",
+      "refs/locations/cam-bolme.png"
+    ]
+  },
+  {
+    "episode": 22,
+    "scene": "e22s04",
+    "type": "video",
+    "target": "public/media/e22/e22s04.mp4",
+    "seconds": 9,
+    "prompt": "medium close-up, locked-off static camera. The old father lowers his head and looks away from Aras, refusing to answer, long silence, the lamp buzzing. Characters: Kemal = 62-year-old Turkish man, thin and slightly stooped, short grey beard, receding grey hair, round wire-rimmed glasses, hollow cheeks, tired grey-brown eyes, wearing worn brown wool cardigan over a white shirt, grey trousers. Location: a thick glass observation partition at the back of the basement control room, a dim room behind it with a single chair and a desk covered in notebooks. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 9 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/characters/baba.png",
+      "refs/locations/cam-bolme.png"
+    ],
+    "missingReferences": [
+      "refs/characters/baba.png",
+      "refs/locations/cam-bolme.png"
+    ]
+  },
+  {
+    "episode": 23,
+    "scene": "e23s01",
+    "type": "video",
+    "target": "public/media/e23/e23s01.mp4",
+    "seconds": 10,
+    "prompt": "wide shot, slow tilt up. Aras runs up from the basement and freezes: every step of the dark spiral stairwell is occupied by a motionless apartment resident, all of them staring down at him. Characters: Aras = 28-year-old Turkish man, lean build, pale olive skin, dark tousled hair slightly long on top, short dark stubble, deep-set dark brown eyes with dark circles, thin straight nose, narrow jaw, a small pale scar above the left eyebrow, wearing charcoal grey hoodie over a faded black t-shirt, dark jeans, barefoot or worn grey socks; Apartman = several Turkish apartment residents of different ages, faces pale and expressionless, clothes from different decades, wearing 1970s to 2020s mixed home clothes. Location: dark spiral stairwell of an old Istanbul apartment, worn marble steps, iron railing, timer light switch glowing orange, peeling paint. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 10 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/characters/aras.png",
+      "refs/characters/sakinler.png",
+      "refs/locations/merdiven.png"
+    ],
+    "missingReferences": [
+      "refs/characters/aras.png",
+      "refs/characters/sakinler.png",
+      "refs/locations/merdiven.png"
+    ]
+  },
+  {
+    "episode": 23,
+    "scene": "e23s02",
+    "type": "video",
+    "target": "public/media/e23/e23s02.mp4",
+    "seconds": 9,
+    "prompt": "medium close-up, slow pan right. Slow pan across pale expressionless faces of apartment residents in clothes from different decades: a 1970s suit, a 1990s tracksuit, a wedding dress, a school uniform. Characters: Apartman = several Turkish apartment residents of different ages, faces pale and expressionless, clothes from different decades, wearing 1970s to 2020s mixed home clothes. Location: dark spiral stairwell of an old Istanbul apartment, worn marble steps, iron railing, timer light switch glowing orange, peeling paint. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 9 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/characters/sakinler.png",
+      "refs/locations/merdiven.png"
+    ],
+    "missingReferences": [
+      "refs/characters/sakinler.png",
+      "refs/locations/merdiven.png"
+    ]
+  },
+  {
+    "episode": 23,
+    "scene": "e23s03",
+    "type": "video",
+    "target": "public/media/e23/e23s03.mp4",
+    "seconds": 11,
+    "prompt": "medium close-up, very slow creeping push-in. The old woman in the white floral headscarf steps forward from the crowd on the stairs, her hands grey with ash, speaking softly and sadly. Characters: Nermin = 74-year-old Turkish woman, kind round face with deep wrinkles, loosely tied white floral headscarf, milky pale eyes, wearing knitted burgundy cardigan, long dark skirt, house slippers. Location: dark spiral stairwell of an old Istanbul apartment, worn marble steps, iron railing, timer light switch glowing orange, peeling paint. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 11 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/characters/nermin.png",
+      "refs/locations/merdiven.png"
+    ],
+    "missingReferences": [
+      "refs/characters/nermin.png",
+      "refs/locations/merdiven.png"
+    ]
+  },
+  {
+    "episode": 23,
+    "scene": "e23s05",
+    "type": "video",
+    "target": "public/media/e23/e23s05.mp4",
+    "seconds": 8,
+    "prompt": "close-up, very slow creeping push-in. Close-up: the old woman whispers into Aras's ear while behind her every resident on the stairs slowly turns their head upward toward the third floor at the same time. Characters: Nermin = 74-year-old Turkish woman, kind round face with deep wrinkles, loosely tied white floral headscarf, milky pale eyes, wearing knitted burgundy cardigan, long dark skirt, house slippers; Aras = 28-year-old Turkish man, lean build, pale olive skin, dark tousled hair slightly long on top, short dark stubble, deep-set dark brown eyes with dark circles, thin straight nose, narrow jaw, a small pale scar above the left eyebrow, wearing charcoal grey hoodie over a faded black t-shirt, dark jeans, barefoot or worn grey socks; Apartman = several Turkish apartment residents of different ages, faces pale and expressionless, clothes from different decades, wearing 1970s to 2020s mixed home clothes. Location: dark spiral stairwell of an old Istanbul apartment, worn marble steps, iron railing, timer light switch glowing orange, peeling paint. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 8 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/characters/nermin.png",
+      "refs/characters/aras.png",
+      "refs/characters/sakinler.png",
+      "refs/locations/merdiven.png"
+    ],
+    "missingReferences": [
+      "refs/characters/nermin.png",
+      "refs/characters/aras.png",
+      "refs/characters/sakinler.png",
+      "refs/locations/merdiven.png"
+    ]
+  },
+  {
+    "episode": 24,
+    "scene": "e24s02",
+    "type": "video",
+    "target": "public/media/e24/e24s02.mp4",
+    "seconds": 8,
+    "prompt": "wide shot, slow push-in. The narrow apartment corridor at night: every door stands wide open with warm orange light spilling out, figures slowly stepping out of each doorway. Location: narrow old Turkish apartment corridor, yellowed walls, worn mosaic terrazzo floor, dark wooden doors with brass numbers, a flickering fluorescent tube, stairwell railing at the end. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 8 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/locations/koridor3.png"
+    ],
+    "missingReferences": [
+      "refs/locations/koridor3.png"
+    ]
+  },
+  {
+    "episode": 24,
+    "scene": "e24s03",
+    "type": "video",
+    "target": "public/media/e24/e24s03.mp4",
+    "seconds": 9,
+    "prompt": "medium close-up, slow pan left. A slow lateral tracking shot past several versions of the same man standing in the corridor: an 11-year-old boy, a blood-covered man, a clean-shaven man in a white shirt, a 70-year-old in a cardigan, all staring the same direction. Characters: Küçük = 11-year-old Turkish boy, thin, dark messy hair, dark brown eyes, the same facial structure as adult Aras, small pale scar above the left eyebrow, wearing navy blue and white striped pyjama top; Kapıdaki = 28-year-old Turkish man, lean build, pale olive skin, dark tousled hair slightly long on top, short dark stubble, deep-set dark brown eyes with dark circles, thin straight nose, narrow jaw, a small pale scar above the left eyebrow, same face as Aras, blood running from the hairline down the face, soot on cheeks, wet hair, eyes unnervingly calm, wearing the same charcoal grey hoodie, torn at the shoulder, soot-stained; Evli = 28-year-old Turkish man, lean build, pale olive skin, dark tousled hair slightly long on top, short dark stubble, deep-set dark brown eyes with dark circles, thin straight nose, narrow jaw, a small pale scar above the left eyebrow, healthier, clean shaven, wedding ring, wearing white shirt, sleeves rolled; Yaşlı = 28-year-old Turkish man, lean build, pale olive skin, dark tousled hair slightly long on top, short dark stubble, deep-set dark brown eyes with dark circles, thin straight nose, narrow jaw, a small pale scar above the left eyebrow, aged to 70 years old, white stubble, deep wrinkles, the same scar above the left eyebrow, wearing old brown cardigan like his father's. Location: narrow old Turkish apartment corridor, yellowed walls, worn mosaic terrazzo floor, dark wooden doors with brass numbers, a flickering fluorescent tube, stairwell railing at the end. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 9 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/characters/aras-cocuk.png",
+      "refs/characters/aras-kanli.png",
+      "refs/characters/aras-evli.png",
+      "refs/characters/aras-yasli.png",
+      "refs/locations/koridor3.png"
+    ],
+    "missingReferences": [
+      "refs/characters/aras-cocuk.png",
+      "refs/characters/aras-kanli.png",
+      "refs/characters/aras-evli.png",
+      "refs/characters/aras-yasli.png",
+      "refs/locations/koridor3.png"
+    ]
+  },
+  {
+    "episode": 24,
+    "scene": "e24s04",
+    "type": "video",
+    "target": "public/media/e24/e24s04.mp4",
+    "seconds": 7,
+    "prompt": "close-up, very slow creeping push-in. Close-up: the 70-year-old version of Aras passes by, pauses and leans toward the young Aras's ear, whispering. Characters: Yaşlı = 28-year-old Turkish man, lean build, pale olive skin, dark tousled hair slightly long on top, short dark stubble, deep-set dark brown eyes with dark circles, thin straight nose, narrow jaw, a small pale scar above the left eyebrow, aged to 70 years old, white stubble, deep wrinkles, the same scar above the left eyebrow, wearing old brown cardigan like his father's; Aras = 28-year-old Turkish man, lean build, pale olive skin, dark tousled hair slightly long on top, short dark stubble, deep-set dark brown eyes with dark circles, thin straight nose, narrow jaw, a small pale scar above the left eyebrow, wearing charcoal grey hoodie over a faded black t-shirt, dark jeans, barefoot or worn grey socks. Location: narrow old Turkish apartment corridor, yellowed walls, worn mosaic terrazzo floor, dark wooden doors with brass numbers, a flickering fluorescent tube, stairwell railing at the end. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 7 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/characters/aras-yasli.png",
+      "refs/characters/aras.png",
+      "refs/locations/koridor3.png"
+    ],
+    "missingReferences": [
+      "refs/characters/aras-yasli.png",
+      "refs/characters/aras.png",
+      "refs/locations/koridor3.png"
+    ]
+  },
+  {
+    "episode": 24,
+    "scene": "e24s05",
+    "type": "video",
+    "target": "public/media/e24/e24s05.mp4",
+    "seconds": 15,
+    "prompt": "wide shot, very slow creeping push-in. At the end of the corridor the door numbered 13 slowly swings open revealing a single warm bulb inside; all the versions of Aras stop walking at once. Location: narrow old Turkish apartment corridor, yellowed walls, worn mosaic terrazzo floor, dark wooden doors with brass numbers, a flickering fluorescent tube, stairwell railing at the end. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 15 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/locations/koridor3.png"
+    ],
+    "missingReferences": [
+      "refs/locations/koridor3.png"
+    ]
+  },
+  {
+    "episode": 25,
+    "scene": "e25s01",
+    "type": "video",
+    "target": "public/media/e25/e25s01.mp4",
+    "seconds": 12,
+    "prompt": "wide shot, very slow creeping push-in. Inside an apartment frozen in 2009: soot-blackened walls covered with children's crayon drawings, fine ash on every surface, a single warm hanging bulb, yet a small bed with perfectly clean white sheets. Location: an apartment frozen in 2009, soot-blackened walls, a child's room with crayon drawings, a single warm bulb, everything covered in fine ash yet a small bed perfectly clean. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 12 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/locations/daire13.png"
+    ],
+    "missingReferences": [
+      "refs/locations/daire13.png"
+    ]
+  },
+  {
+    "episode": 25,
+    "scene": "e25s02",
+    "type": "video",
+    "target": "public/media/e25/e25s02.mp4",
+    "seconds": 5,
+    "prompt": "medium shot, very slow creeping push-in. An 11-year-old boy in clean navy striped pyjamas sits on the edge of the clean bed with his back to camera, then slowly turns his head, very pale, no scars. Characters: 13 = 11-year-old Turkish boy, identical to young Aras but with NO scar, very pale clean skin, dark messy hair, still dark eyes that rarely blink, wearing the same navy blue and white striped pyjama top, perfectly clean despite the fire. Location: an apartment frozen in 2009, soot-blackened walls, a child's room with crayon drawings, a single warm bulb, everything covered in fine ash yet a small bed perfectly clean. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 5 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/characters/cocuk-13.png",
+      "refs/locations/daire13.png"
+    ],
+    "missingReferences": [
+      "refs/characters/cocuk-13.png",
+      "refs/locations/daire13.png"
+    ]
+  },
+  {
+    "episode": 25,
+    "scene": "e25s03",
+    "type": "video",
+    "target": "public/media/e25/e25s03.mp4",
+    "seconds": 9,
+    "prompt": "over-the-shoulder shot, locked-off static camera. Over-the-shoulder: Aras kneels down to the boy's eye level in the ash-covered room; the pale boy stares back without blinking. Characters: Aras = 28-year-old Turkish man, lean build, pale olive skin, dark tousled hair slightly long on top, short dark stubble, deep-set dark brown eyes with dark circles, thin straight nose, narrow jaw, a small pale scar above the left eyebrow, wearing charcoal grey hoodie over a faded black t-shirt, dark jeans, barefoot or worn grey socks; 13 = 11-year-old Turkish boy, identical to young Aras but with NO scar, very pale clean skin, dark messy hair, still dark eyes that rarely blink, wearing the same navy blue and white striped pyjama top, perfectly clean despite the fire. Location: an apartment frozen in 2009, soot-blackened walls, a child's room with crayon drawings, a single warm bulb, everything covered in fine ash yet a small bed perfectly clean. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 9 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/characters/aras.png",
+      "refs/characters/cocuk-13.png",
+      "refs/locations/daire13.png"
+    ],
+    "missingReferences": [
+      "refs/characters/aras.png",
+      "refs/characters/cocuk-13.png",
+      "refs/locations/daire13.png"
+    ]
+  },
+  {
+    "episode": 25,
+    "scene": "e25s04",
+    "type": "video",
+    "target": "public/media/e25/e25s04.mp4",
+    "seconds": 11,
+    "prompt": "extreme close-up, slow tilt down. Extreme close-up tilting down the pale boy's face and arms: perfectly clean skin, no burns, no scar above the eyebrow, ash floating in the warm light around him. Characters: 13 = 11-year-old Turkish boy, identical to young Aras but with NO scar, very pale clean skin, dark messy hair, still dark eyes that rarely blink, wearing the same navy blue and white striped pyjama top, perfectly clean despite the fire. Location: an apartment frozen in 2009, soot-blackened walls, a child's room with crayon drawings, a single warm bulb, everything covered in fine ash yet a small bed perfectly clean. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 11 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/characters/cocuk-13.png",
+      "refs/locations/daire13.png"
+    ],
+    "missingReferences": [
+      "refs/characters/cocuk-13.png",
+      "refs/locations/daire13.png"
+    ]
+  },
+  {
+    "episode": 25,
+    "scene": "e25s05",
+    "type": "video",
+    "target": "public/media/e25/e25s05.mp4",
+    "seconds": 9,
+    "prompt": "close-up, very slow creeping push-in. Close-up of the pale boy tilting his head, the single bulb flickering, behind him a crayon drawing on the wall of a burning house. Characters: 13 = 11-year-old Turkish boy, identical to young Aras but with NO scar, very pale clean skin, dark messy hair, still dark eyes that rarely blink, wearing the same navy blue and white striped pyjama top, perfectly clean despite the fire. Location: an apartment frozen in 2009, soot-blackened walls, a child's room with crayon drawings, a single warm bulb, everything covered in fine ash yet a small bed perfectly clean. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 9 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/characters/cocuk-13.png",
+      "refs/locations/daire13.png"
+    ],
+    "missingReferences": [
+      "refs/characters/cocuk-13.png",
+      "refs/locations/daire13.png"
+    ]
+  },
+  {
+    "episode": 26,
+    "scene": "e26s01",
+    "type": "video",
+    "target": "public/media/e26/e26s01.mp4",
+    "seconds": 8,
+    "prompt": "extreme close-up, very slow creeping push-in. Extreme close-up of a small child's palm slowly opening to reveal a single half-burned matchstick, ash falling around it in warm light. Characters: 13 = 11-year-old Turkish boy, identical to young Aras but with NO scar, very pale clean skin, dark messy hair, still dark eyes that rarely blink, wearing the same navy blue and white striped pyjama top, perfectly clean despite the fire. Location: an apartment frozen in 2009, soot-blackened walls, a child's room with crayon drawings, a single warm bulb, everything covered in fine ash yet a small bed perfectly clean. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 8 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/characters/cocuk-13.png",
+      "refs/locations/daire13.png"
+    ],
+    "missingReferences": [
+      "refs/characters/cocuk-13.png",
+      "refs/locations/daire13.png"
+    ]
+  },
+  {
+    "episode": 26,
+    "scene": "e26s02",
+    "type": "video",
+    "target": "public/media/e26/e26s02.mp4",
+    "seconds": 13,
+    "prompt": "close-up, locked-off static camera. Close-up of the pale boy placing the burned match on the white sheet, never taking his eyes off Aras. Characters: 13 = 11-year-old Turkish boy, identical to young Aras but with NO scar, very pale clean skin, dark messy hair, still dark eyes that rarely blink, wearing the same navy blue and white striped pyjama top, perfectly clean despite the fire. Location: an apartment frozen in 2009, soot-blackened walls, a child's room with crayon drawings, a single warm bulb, everything covered in fine ash yet a small bed perfectly clean. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 13 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/characters/cocuk-13.png",
+      "refs/locations/daire13.png"
+    ],
+    "missingReferences": [
+      "refs/characters/cocuk-13.png",
+      "refs/locations/daire13.png"
+    ]
+  },
+  {
+    "episode": 26,
+    "scene": "e26s03",
+    "type": "video",
+    "target": "public/media/e26/e26s03.mp4",
+    "seconds": 10,
+    "prompt": "wide shot, subtle controlled handheld tremor. Flashback 2009 in a makeshift home laboratory full of wires and old electronics, a blue flash of light, an 11-year-old boy in striped pyjamas falls out of the light onto the floor, gasping. Characters: Küçük = 11-year-old Turkish boy, thin, dark messy hair, dark brown eyes, the same facial structure as adult Aras, small pale scar above the left eyebrow, wearing navy blue and white striped pyjama top. Location: an apartment frozen in 2009, soot-blackened walls, a child's room with crayon drawings, a single warm bulb, everything covered in fine ash yet a small bed perfectly clean. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 10 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/characters/aras-cocuk.png",
+      "refs/locations/daire13.png"
+    ],
+    "missingReferences": [
+      "refs/characters/aras-cocuk.png",
+      "refs/locations/daire13.png"
+    ]
+  },
+  {
+    "episode": 26,
+    "scene": "e26s04",
+    "type": "video",
+    "target": "public/media/e26/e26s04.mp4",
+    "seconds": 10,
+    "prompt": "close-up, very slow creeping push-in. Close-up of Aras's face in the ash-filled room, warm light, his breathing becoming ragged as he understands. Characters: Aras = 28-year-old Turkish man, lean build, pale olive skin, dark tousled hair slightly long on top, short dark stubble, deep-set dark brown eyes with dark circles, thin straight nose, narrow jaw, a small pale scar above the left eyebrow, wearing charcoal grey hoodie over a faded black t-shirt, dark jeans, barefoot or worn grey socks. Location: an apartment frozen in 2009, soot-blackened walls, a child's room with crayon drawings, a single warm bulb, everything covered in fine ash yet a small bed perfectly clean. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 10 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/characters/aras.png",
+      "refs/locations/daire13.png"
+    ],
+    "missingReferences": [
+      "refs/characters/aras.png",
+      "refs/locations/daire13.png"
+    ]
+  },
+  {
+    "episode": 26,
+    "scene": "e26s05",
+    "type": "video",
+    "target": "public/media/e26/e26s05.mp4",
+    "seconds": 9,
+    "prompt": "extreme close-up, locked-off static camera. Extreme close-up: the pale boy's small finger gently touches the small scar above Aras's left eyebrow, then the bulb goes out. Characters: 13 = 11-year-old Turkish boy, identical to young Aras but with NO scar, very pale clean skin, dark messy hair, still dark eyes that rarely blink, wearing the same navy blue and white striped pyjama top, perfectly clean despite the fire; Aras = 28-year-old Turkish man, lean build, pale olive skin, dark tousled hair slightly long on top, short dark stubble, deep-set dark brown eyes with dark circles, thin straight nose, narrow jaw, a small pale scar above the left eyebrow, wearing charcoal grey hoodie over a faded black t-shirt, dark jeans, barefoot or worn grey socks. Location: an apartment frozen in 2009, soot-blackened walls, a child's room with crayon drawings, a single warm bulb, everything covered in fine ash yet a small bed perfectly clean. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 9 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/characters/cocuk-13.png",
+      "refs/characters/aras.png",
+      "refs/locations/daire13.png"
+    ],
+    "missingReferences": [
+      "refs/characters/cocuk-13.png",
+      "refs/characters/aras.png",
+      "refs/locations/daire13.png"
+    ]
+  },
+  {
+    "episode": 27,
+    "scene": "e27s01",
+    "type": "video",
+    "target": "public/media/e27/e27s01.mp4",
+    "seconds": 11,
+    "prompt": "wide shot, locked-off static camera. Backlit by the corridor light, the thin stooped silhouette of the old father stands in the doorway of apartment 13, light glinting on his round glasses. Characters: Kemal = 62-year-old Turkish man, thin and slightly stooped, short grey beard, receding grey hair, round wire-rimmed glasses, hollow cheeks, tired grey-brown eyes, wearing worn brown wool cardigan over a white shirt, grey trousers. Location: an apartment frozen in 2009, soot-blackened walls, a child's room with crayon drawings, a single warm bulb, everything covered in fine ash yet a small bed perfectly clean. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 11 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/characters/baba.png",
+      "refs/locations/daire13.png"
+    ],
+    "missingReferences": [
+      "refs/characters/baba.png",
+      "refs/locations/daire13.png"
+    ]
+  },
+  {
+    "episode": 27,
+    "scene": "e27s02",
+    "type": "video",
+    "target": "public/media/e27/e27s02.mp4",
+    "seconds": 8,
+    "prompt": "medium close-up, very slow creeping push-in. The old father steps inside leaving footprints in the ash, his eyes fixed on the pale boy on the bed, his voice barely a whisper. Characters: Kemal = 62-year-old Turkish man, thin and slightly stooped, short grey beard, receding grey hair, round wire-rimmed glasses, hollow cheeks, tired grey-brown eyes, wearing worn brown wool cardigan over a white shirt, grey trousers; 13 = 11-year-old Turkish boy, identical to young Aras but with NO scar, very pale clean skin, dark messy hair, still dark eyes that rarely blink, wearing the same navy blue and white striped pyjama top, perfectly clean despite the fire. Location: an apartment frozen in 2009, soot-blackened walls, a child's room with crayon drawings, a single warm bulb, everything covered in fine ash yet a small bed perfectly clean. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 8 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/characters/baba.png",
+      "refs/characters/cocuk-13.png",
+      "refs/locations/daire13.png"
+    ],
+    "missingReferences": [
+      "refs/characters/baba.png",
+      "refs/characters/cocuk-13.png",
+      "refs/locations/daire13.png"
+    ]
+  },
+  {
+    "episode": 27,
+    "scene": "e27s03",
+    "type": "video",
+    "target": "public/media/e27/e27s03.mp4",
+    "seconds": 13,
+    "prompt": "close-up, very slow creeping push-in. Close-up: the old father turns to Aras and raises a trembling hand toward the scar above Aras's eyebrow but stops just before touching it. Characters: Kemal = 62-year-old Turkish man, thin and slightly stooped, short grey beard, receding grey hair, round wire-rimmed glasses, hollow cheeks, tired grey-brown eyes, wearing worn brown wool cardigan over a white shirt, grey trousers; Aras = 28-year-old Turkish man, lean build, pale olive skin, dark tousled hair slightly long on top, short dark stubble, deep-set dark brown eyes with dark circles, thin straight nose, narrow jaw, a small pale scar above the left eyebrow, wearing charcoal grey hoodie over a faded black t-shirt, dark jeans, barefoot or worn grey socks. Location: an apartment frozen in 2009, soot-blackened walls, a child's room with crayon drawings, a single warm bulb, everything covered in fine ash yet a small bed perfectly clean. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 13 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/characters/baba.png",
+      "refs/characters/aras.png",
+      "refs/locations/daire13.png"
+    ],
+    "missingReferences": [
+      "refs/characters/baba.png",
+      "refs/characters/aras.png",
+      "refs/locations/daire13.png"
+    ]
+  },
+  {
+    "episode": 27,
+    "scene": "e27s04",
+    "type": "video",
+    "target": "public/media/e27/e27s04.mp4",
+    "seconds": 10,
+    "prompt": "over-the-shoulder shot, locked-off static camera. Over-the-shoulder two-shot in the ash-filled room: Aras and his old father face to face, tears in the father's grey beard, Aras does not step back. Characters: Aras = 28-year-old Turkish man, lean build, pale olive skin, dark tousled hair slightly long on top, short dark stubble, deep-set dark brown eyes with dark circles, thin straight nose, narrow jaw, a small pale scar above the left eyebrow, wearing charcoal grey hoodie over a faded black t-shirt, dark jeans, barefoot or worn grey socks; Kemal = 62-year-old Turkish man, thin and slightly stooped, short grey beard, receding grey hair, round wire-rimmed glasses, hollow cheeks, tired grey-brown eyes, wearing worn brown wool cardigan over a white shirt, grey trousers. Location: an apartment frozen in 2009, soot-blackened walls, a child's room with crayon drawings, a single warm bulb, everything covered in fine ash yet a small bed perfectly clean. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 10 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/characters/aras.png",
+      "refs/characters/baba.png",
+      "refs/locations/daire13.png"
+    ],
+    "missingReferences": [
+      "refs/characters/aras.png",
+      "refs/characters/baba.png",
+      "refs/locations/daire13.png"
+    ]
+  },
+  {
+    "episode": 28,
+    "scene": "e28s01",
+    "type": "video",
+    "target": "public/media/e28/e28s01.mp4",
+    "seconds": 10,
+    "prompt": "wide shot, subtle controlled handheld tremor. The hidden basement control room shaking violently, dust raining from the ceiling, CRT monitors glitching and bleeding into each other, red emergency light. Location: hidden basement control room full of old CRT monitors stacked on metal shelves, VHS recorders, reel-to-reel tape machines, tangled cables, green and blue screen glow, hand-written labels with dates. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 10 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/locations/gizli-oda.png"
+    ],
+    "missingReferences": [
+      "refs/locations/gizli-oda.png"
+    ]
+  },
+  {
+    "episode": 28,
+    "scene": "e28s02",
+    "type": "video",
+    "target": "public/media/e28/e28s02.mp4",
+    "seconds": 8,
+    "prompt": "medium close-up, very slow creeping push-in. The old father at a cluttered control desk, half his face in red emergency light, flipping switches with shaking hands. Characters: Kemal = 62-year-old Turkish man, thin and slightly stooped, short grey beard, receding grey hair, round wire-rimmed glasses, hollow cheeks, tired grey-brown eyes, wearing worn brown wool cardigan over a white shirt, grey trousers. Location: hidden basement control room full of old CRT monitors stacked on metal shelves, VHS recorders, reel-to-reel tape machines, tangled cables, green and blue screen glow, hand-written labels with dates. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 8 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/characters/baba.png",
+      "refs/locations/gizli-oda.png"
+    ],
+    "missingReferences": [
+      "refs/characters/baba.png",
+      "refs/locations/gizli-oda.png"
+    ]
+  },
+  {
+    "episode": 28,
+    "scene": "e28s03",
+    "type": "video",
+    "target": "public/media/e28/e28s03.mp4",
+    "seconds": 8,
+    "prompt": "insert detail shot, slow push-in. Insert: an old man's hand lifts a hinged metal cover on the control desk revealing a single red key switch, then holds a red key out toward camera. Characters: Kemal = 62-year-old Turkish man, thin and slightly stooped, short grey beard, receding grey hair, round wire-rimmed glasses, hollow cheeks, tired grey-brown eyes, wearing worn brown wool cardigan over a white shirt, grey trousers. Location: hidden basement control room full of old CRT monitors stacked on metal shelves, VHS recorders, reel-to-reel tape machines, tangled cables, green and blue screen glow, hand-written labels with dates. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 8 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/characters/baba.png",
+      "refs/locations/gizli-oda.png"
+    ],
+    "missingReferences": [
+      "refs/characters/baba.png",
+      "refs/locations/gizli-oda.png"
+    ]
+  },
+  {
+    "episode": 28,
+    "scene": "e28s05",
+    "type": "video",
+    "target": "public/media/e28/e28s05.mp4",
+    "seconds": 12,
+    "prompt": "extreme close-up, very slow creeping push-in. Extreme close-up of a red key resting in Aras's trembling open palm under red emergency light. Characters: Aras = 28-year-old Turkish man, lean build, pale olive skin, dark tousled hair slightly long on top, short dark stubble, deep-set dark brown eyes with dark circles, thin straight nose, narrow jaw, a small pale scar above the left eyebrow, wearing charcoal grey hoodie over a faded black t-shirt, dark jeans, barefoot or worn grey socks. Location: hidden basement control room full of old CRT monitors stacked on metal shelves, VHS recorders, reel-to-reel tape machines, tangled cables, green and blue screen glow, hand-written labels with dates. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 12 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/characters/aras.png",
+      "refs/locations/gizli-oda.png"
+    ],
+    "missingReferences": [
+      "refs/characters/aras.png",
+      "refs/locations/gizli-oda.png"
+    ]
+  },
+  {
+    "episode": 29,
+    "scene": "e29s01",
+    "type": "video",
+    "target": "public/media/e29/e29s01.mp4",
+    "seconds": 6,
+    "prompt": "medium shot, subtle controlled handheld tremor. Aras throws the red key onto the wet concrete floor, it bounces into the darkness, the old father closes his eyes in the red light. Characters: Aras = 28-year-old Turkish man, lean build, pale olive skin, dark tousled hair slightly long on top, short dark stubble, deep-set dark brown eyes with dark circles, thin straight nose, narrow jaw, a small pale scar above the left eyebrow, wearing charcoal grey hoodie over a faded black t-shirt, dark jeans, barefoot or worn grey socks; Kemal = 62-year-old Turkish man, thin and slightly stooped, short grey beard, receding grey hair, round wire-rimmed glasses, hollow cheeks, tired grey-brown eyes, wearing worn brown wool cardigan over a white shirt, grey trousers. Location: hidden basement control room full of old CRT monitors stacked on metal shelves, VHS recorders, reel-to-reel tape machines, tangled cables, green and blue screen glow, hand-written labels with dates. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 6 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/characters/aras.png",
+      "refs/characters/baba.png",
+      "refs/locations/gizli-oda.png"
+    ],
+    "missingReferences": [
+      "refs/characters/aras.png",
+      "refs/characters/baba.png",
+      "refs/locations/gizli-oda.png"
+    ]
+  },
+  {
+    "episode": 29,
+    "scene": "e29s02",
+    "type": "video",
+    "target": "public/media/e29/e29s02.mp4",
+    "seconds": 10,
+    "prompt": "first-person POV shot, subtle controlled handheld tremor. POV running up a dark spiral stairwell as thick smoke pours down the steps, orange glow from above, the fire is starting again. Location: dark spiral stairwell of an old Istanbul apartment, worn marble steps, iron railing, timer light switch glowing orange, peeling paint. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 10 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/locations/merdiven.png"
+    ],
+    "missingReferences": [
+      "refs/locations/merdiven.png"
+    ]
+  },
+  {
+    "episode": 29,
+    "scene": "e29s04",
+    "type": "video",
+    "target": "public/media/e29/e29s04.mp4",
+    "seconds": 13,
+    "prompt": "close-up, very slow creeping push-in. Close-up of Aras's face lit by the phone screen in a smoke-filled room, realization dawning, orange firelight flickering on his cheek. Characters: Aras = 28-year-old Turkish man, lean build, pale olive skin, dark tousled hair slightly long on top, short dark stubble, deep-set dark brown eyes with dark circles, thin straight nose, narrow jaw, a small pale scar above the left eyebrow, wearing charcoal grey hoodie over a faded black t-shirt, dark jeans, barefoot or worn grey socks. Location: an apartment frozen in 2009, soot-blackened walls, a child's room with crayon drawings, a single warm bulb, everything covered in fine ash yet a small bed perfectly clean. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 13 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/characters/aras.png",
+      "refs/locations/daire13.png"
+    ],
+    "missingReferences": [
+      "refs/characters/aras.png",
+      "refs/locations/daire13.png"
+    ]
+  },
+  {
+    "episode": 29,
+    "scene": "e29s05",
+    "type": "video",
+    "target": "public/media/e29/e29s05.mp4",
+    "seconds": 10,
+    "prompt": "medium close-up, very slow creeping push-in. Aras takes the pale boy's hand in the smoke-filled room, flames visible in the doorway behind them, Aras's face suddenly calm and determined. Characters: Aras = 28-year-old Turkish man, lean build, pale olive skin, dark tousled hair slightly long on top, short dark stubble, deep-set dark brown eyes with dark circles, thin straight nose, narrow jaw, a small pale scar above the left eyebrow, wearing charcoal grey hoodie over a faded black t-shirt, dark jeans, barefoot or worn grey socks; 13 = 11-year-old Turkish boy, identical to young Aras but with NO scar, very pale clean skin, dark messy hair, still dark eyes that rarely blink, wearing the same navy blue and white striped pyjama top, perfectly clean despite the fire. Location: an apartment frozen in 2009, soot-blackened walls, a child's room with crayon drawings, a single warm bulb, everything covered in fine ash yet a small bed perfectly clean. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 10 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/characters/aras.png",
+      "refs/characters/cocuk-13.png",
+      "refs/locations/daire13.png"
+    ],
+    "missingReferences": [
+      "refs/characters/aras.png",
+      "refs/characters/cocuk-13.png",
+      "refs/locations/daire13.png"
+    ]
+  },
+  {
+    "episode": 30,
+    "scene": "e30s01",
+    "type": "video",
+    "target": "public/media/e30/e30s01.mp4",
+    "seconds": 10,
+    "prompt": "medium close-up, subtle controlled handheld tremor. Aras pulls down a huge rusty main power lever with both hands in the basement control room, sparks fly, every CRT monitor goes dark one after another. Characters: Aras = 28-year-old Turkish man, lean build, pale olive skin, dark tousled hair slightly long on top, short dark stubble, deep-set dark brown eyes with dark circles, thin straight nose, narrow jaw, a small pale scar above the left eyebrow, wearing charcoal grey hoodie over a faded black t-shirt, dark jeans, barefoot or worn grey socks. Location: hidden basement control room full of old CRT monitors stacked on metal shelves, VHS recorders, reel-to-reel tape machines, tangled cables, green and blue screen glow, hand-written labels with dates. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 10 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/characters/aras.png",
+      "refs/locations/gizli-oda.png"
+    ],
+    "missingReferences": [
+      "refs/characters/aras.png",
+      "refs/locations/gizli-oda.png"
+    ]
+  },
+  {
+    "episode": 30,
+    "scene": "e30s02",
+    "type": "video",
+    "target": "public/media/e30/e30s02.mp4",
+    "seconds": 11,
+    "prompt": "wide shot, very slow creeping push-in. A clean bright ordinary modern bedroom at dawn, soft golden morning light through white curtains, Aras slowly opens his eyes in bed, calm, everything normal. Characters: Aras = 28-year-old Turkish man, lean build, pale olive skin, dark tousled hair slightly long on top, short dark stubble, deep-set dark brown eyes with dark circles, thin straight nose, narrow jaw, a small pale scar above the left eyebrow, wearing charcoal grey hoodie over a faded black t-shirt, dark jeans, barefoot or worn grey socks. Location: a clean, bright, ordinary modern apartment bedroom at dawn, white walls, soft morning light, everything calm and normal. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 11 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/characters/aras.png",
+      "refs/locations/normal-ev.png"
+    ],
+    "missingReferences": [
+      "refs/characters/aras.png",
+      "refs/locations/normal-ev.png"
+    ]
+  },
+  {
+    "episode": 30,
+    "scene": "e30s04",
+    "type": "video",
+    "target": "public/media/e30/e30s04.mp4",
+    "seconds": 13,
+    "prompt": "close-up, very slow creeping push-in. Close-up of Aras staring at his phone, the warm morning light in the room drains away into cold night darkness in a single continuous shot, the phone glow now the only light. Characters: Aras = 28-year-old Turkish man, lean build, pale olive skin, dark tousled hair slightly long on top, short dark stubble, deep-set dark brown eyes with dark circles, thin straight nose, narrow jaw, a small pale scar above the left eyebrow, wearing charcoal grey hoodie over a faded black t-shirt, dark jeans, barefoot or worn grey socks. Location: a clean, bright, ordinary modern apartment bedroom at dawn, white walls, soft morning light, everything calm and normal. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 13 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/characters/aras.png",
+      "refs/locations/normal-ev.png"
+    ],
+    "missingReferences": [
+      "refs/characters/aras.png",
+      "refs/locations/normal-ev.png"
+    ]
+  },
+  {
+    "episode": 30,
+    "scene": "e30s05",
+    "type": "video",
+    "target": "public/media/e30/e30s05.mp4",
+    "seconds": 12,
+    "prompt": "first-person POV shot, very slow creeping push-in. POV moving very slowly down a dark hallway toward a closed front door, a thin strip of light under the door broken by the shadow of two small child-sized feet. Location: inside view of an old dark-brown wooden Turkish apartment front door with a brass peephole and a chain lock, a thin strip of yellow corridor light under the door, a narrow hallway with a coat hook. photorealistic cinematic film still, vertical 9:16 composition, shot on ARRI Alexa with anamorphic lenses, cold desaturated teal and sodium-yellow palette, natural motivated practical lighting, deep shadows, shallow depth of field, subtle 35mm film grain, realistic skin texture, slow deliberate camera, Turkish psychological horror series. Duration about 12 seconds, no cuts, realistic motion.",
+    "negative": "cartoon, anime, 3d render, CGI look, plastic skin, oversaturated, text, watermark, logo, subtitles, extra fingers, deformed face, jump-cut, fast motion, bright cheerful lighting",
+    "references": [
+      "refs/locations/daire7-kapi.png"
+    ],
+    "missingReferences": [
+      "refs/locations/daire7-kapi.png"
+    ]
   }
 ]
