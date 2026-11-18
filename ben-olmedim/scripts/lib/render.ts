@@ -1,5 +1,5 @@
 // Remotion ile MP4 render (1080×1920, H.264, AAC).
-import { execFileSync } from "node:child_process";
+import { execFileSync, spawnSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { bundle } from "@remotion/bundler";
@@ -63,11 +63,17 @@ export async function renderEpisode(
       }
     },
   });
-  // platform standardı ses: -14 LUFS, gerçek tepe -1.5 dBTP (video yeniden kodlanmaz)
+  normalizeAudio(out);
+  opts.log(`  ✓ ${path.relative(process.cwd(), out)} (${((Date.now() - t0) / 1000).toFixed(0)} sn)`);
+  return out;
+}
+
+/** Platform standardı ses: -14 LUFS, gerçek tepe -1.5 dBTP (video yeniden kodlanmaz). */
+export function normalizeAudio(out: string) {
   const tmp = out.replace(/\.mp4$/, ".tmp.mp4");
-  fs.renameSync(out, tmp);
+  if (fs.existsSync(out)) fs.renameSync(out, tmp);
   // iki geçişli loudnorm: önce ölç, sonra doğrusal uygula (dinamikleri ezmeden hedefe oturur)
-  const probe = execFileSync("ffmpeg", ["-hide_banner", "-i", tmp, "-af", "loudnorm=I=-14:TP=-1.5:LRA=11:print_format=json", "-f", "null", "-"], { stdio: ["ignore", "ignore", "pipe"] }).toString();
+  const probe = spawnSync("ffmpeg", ["-hide_banner", "-i", tmp, "-af", "loudnorm=I=-14:TP=-1.5:LRA=11:print_format=json", "-f", "null", "-"], { encoding: "utf8" }).stderr ?? "";
   let af = "loudnorm=I=-14:TP=-1.5:LRA=11";
   const json = probe.slice(probe.lastIndexOf("{"), probe.lastIndexOf("}") + 1);
   try {
@@ -78,6 +84,4 @@ export async function renderEpisode(
   }
   execFileSync("ffmpeg", ["-y", "-v", "error", "-i", tmp, "-c:v", "copy", "-af", `${af},aresample=48000`, "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", out]);
   fs.unlinkSync(tmp);
-  opts.log(`  ✓ ${path.relative(process.cwd(), out)} (${((Date.now() - t0) / 1000).toFixed(0)} sn)`);
-  return out;
 }
