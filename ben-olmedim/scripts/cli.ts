@@ -103,9 +103,10 @@ function statusTable() {
     const m: EpisodeManifest | null = fs.existsSync(mf) ? JSON.parse(fs.readFileSync(mf, "utf8")) : null;
     const needs = ep.scenes.filter((s) => s.media).length;
     const have = ep.scenes.filter((s, i) => s.media && findSceneMedia(ep.number, i)).length;
-    const mp4 = path.join(OUT_DIR, `BEN_OLMEDIM_B${pad(ep.number)}.mp4`);
+    const final = fs.existsSync(path.join(OUT_DIR, `BEN_OLMEDIM_B${pad(ep.number)}.mp4`));
+    const animatic = fs.existsSync(path.join(OUT_DIR, `BEN_OLMEDIM_B${pad(ep.number)}_ANIMATIK.mp4`));
     rows.push(
-      `| ${ep.number} | [${ep.title}](e${pad(ep.number)}.md) | ${ep.scenes.length} | ${ep.scenes.reduce((a, s) => a + s.lines.length, 0)} | ${m ? `${m.seconds} sn` : "—"} | ${have}/${needs} | ${fs.existsSync(mp4) ? "✅" : "—"} |`,
+      `| ${ep.number} | [${ep.title}](e${pad(ep.number)}.md) | ${ep.scenes.length} | ${ep.scenes.reduce((a, s) => a + s.lines.length, 0)} | ${m ? `${m.seconds} sn` : "—"} | ${have}/${needs} | ${final ? "✅ final" : animatic ? "🎞️ animatik" : "—"} |`,
     );
   }
   fs.mkdirSync(REPORT_DIR, { recursive: true });
