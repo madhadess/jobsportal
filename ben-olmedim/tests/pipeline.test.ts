@@ -120,6 +120,20 @@ describe("dizi verisi", () => {
     expect(last).toContain("bu sefer beni kurtaracak mısın?");
   });
 
+  it("özel bölüm: replik bağlantılı zamanlar ve sahne karakterleri geçerli", () => {
+    const ep = getEpisode(101);
+    expect(ep.slug).toBe("kapi-tavan");
+    for (const [i, sc] of ep.scenes.entries()) {
+      if (sc.insert?.kind !== "stage") continue;
+      const refs = sc.insert.actors.flatMap((a) => [a.appearAt, a.vanishAt, ...(a.poseAt ?? []).map((p) => p[0]), ...(a.exprAt ?? []).map((p) => p[0]), ...(a.moveTo ? [a.moveTo[0], a.moveTo[1]] : [])]);
+      for (const r of refs) {
+        if (typeof r !== "string") continue;
+        const n = Number(/^[LE](\d+)/.exec(r)?.[1]);
+        expect(n, `sahne ${i + 1}: ${r}`).toBeLessThan(sc.lines.length);
+      }
+    }
+  });
+
   it("üretim promptu stil, karakter kimliği ve mekânı içerir", () => {
     const s = getEpisode(2).scenes[0];
     const p = buildScenePrompt(s, 6)!;
@@ -129,13 +143,14 @@ describe("dizi verisi", () => {
     expect(p.referenceImages).toContain(CHARACTERS.arasKanli.referenceImage);
   });
 
-  it("hazırlanmış manifestler 45–60 sn aralığında (varsa)", () => {
+  it("hazırlanmış manifestler bölümün süre aralığında (dizi 45–60 sn, özel bölüm kendi aralığı)", () => {
     const dir = path.join(__dirname, "..", "public", "manifests");
     const files = fs.existsSync(dir) ? fs.readdirSync(dir).filter((f) => f.endsWith(".json")) : [];
     for (const f of files) {
       const m = JSON.parse(fs.readFileSync(path.join(dir, f), "utf8")) as EpisodeManifest;
-      expect(m.seconds, f).toBeGreaterThanOrEqual(45);
-      expect(m.seconds, f).toBeLessThanOrEqual(60);
+      const [lo, hi] = getEpisode(m.episode).durationRange ?? [45, 60];
+      expect(m.seconds, f).toBeGreaterThanOrEqual(lo);
+      expect(m.seconds, f).toBeLessThanOrEqual(hi);
     }
   });
 });

@@ -123,6 +123,46 @@ Süre 60 sn'yi aşarsa `prepare` hata verir; 45 sn'nin altındaysa en gergin sah
 Sahnede `silence: true` → bütün ortam sesleri kesilir (korkunun en güçlü anları için).
 Çıktı −14 LUFS / −1,5 dBTP'ye normalize edilir.
 
+## Özel bölümler — "KAPI. TAVAN." (izleyici hikâyesi, ~3 dk, 2D animasyon)
+
+`src/series/specials/kapiTavan.ts` — diziden bağımsız, karakterli 2D animasyon bölümü.
+
+```bash
+# doğal ses (Trendyol-TTS) ile hazırla + render al
+TTS_ENGINE=voxcpm TTS_VOXCPM_PYTHON=/home/user/tts-venv/bin/python npm run prepare:ep -- kapi-tavan
+npm run render -- kapi-tavan --clean          # out/KAPI_TAVAN.mp4
+```
+
+### 2D animasyon karakterleri (`src/components/toon/`)
+
+- `Character.tsx` — SVG iskelet: omuz/dirsek/kalça/diz açılarıyla pozlar (`stand`, `dance`, `sit`,
+  `sitFloor`, `lie`, `point`, `armsOut`, `grab`, `walk`, `handsFace`, `phone`), yüz ifadeleri
+  (`smile`, `creepy`, `scared`, `shout`, `cry`, `possessed`…), otomatik göz kırpma, nefes alma.
+  Karakter görünümleri `LOOKS` içinde (saç, ten, kıyafet, yapı).
+- Ağız senkronu: her repliğin ses dalgasından kare başına zarf çıkarılır (`scripts/lib/tts.ts → envelope`);
+  `speaks: ["mustafa"]` olan karakterin ağzı o repliklerde sese göre açılır.
+- `Stage.tsx` — dekorlar ve ışık: `party`, `living`, `candles`, `street`, `doorway`, `police`,
+  `bedroom`, `glass`, `doorCeiling`, `hallway`.
+- Sahne olayları repliklere bağlanır: `"E2"` = 3. replik bitince, `"L1+2.5"` = 2. replik başlayınca
+  2,5 sn sonra (`poseAt`, `exprAt`, `appearAt`, `vanishAt`, `moveTo`).
+
+### Doğal Türkçe ses: Trendyol-TTS (VoxCPM2, MIT)
+
+Piper yerine gerçek insana yakın ses için [Boran-Sert/Turkish-TTS](https://github.com/Boran-Sert/Turkish-TTS)
+paketi ve Trendyol'un MIT lisanslı ağırlıkları kullanılır. GPU önerilir; CPU'da ~5× gerçek zaman çalışır.
+
+```bash
+python3 -m venv /home/user/tts-venv
+/home/user/tts-venv/bin/pip install torch torchaudio --index-url https://download.pytorch.org/whl/cpu
+git clone https://github.com/Boran-Sert/Turkish-TTS && /home/user/tts-venv/bin/pip install -e Turkish-TTS faster-whisper
+```
+
+- Her karakterin sesi `voices/<konuşan>.wav` referansından klonlanır (bkz. [`voices/README.md`](voices/README.md));
+  referans yoksa `bible.ts → VOX[...].design` tarifiyle bir kez tasarlanır.
+- Her replik faster-whisper ile geri yazıya çevrilir; duyulan sözcük oranı %88'in altındaysa
+  replik yeniden üretilir (en fazla 3 deneme) — bozuk/yutulmuş Türkçe çıkmaz.
+- Gerekli ağ erişimi: `huggingface.co`, `us.aws.cdn.hf.co` (model indirme), `download(-r2).pytorch.org`.
+
 ## Lisanslar
 
 - Piper Türkçe ses modelleri: `tr_TR-fahrettin-medium` ve `tr_TR-fettah-medium` **CC0** — varsayılan
@@ -132,5 +172,6 @@ Sahnede `silence: true` → bütün ortam sesleri kesilir (korkunun en güçlü 
   olmayan kullanım için açılır (`bible.ts` → `NC_VOICE_OVERRIDES`).
 - Daha doğal sesler için ticari bir Türkçe TTS (ör. ElevenLabs, Azure) `scripts/lib/tts.ts`
   içindeki sentez adımına eklenebilir; zamanlama hattı ses kaynağından bağımsızdır.
+- Trendyol-TTS ağırlıkları: MIT; Turkish-TTS paketi ve `voices/ercanAnne.wav` (repo içindeki `kadın.wav`): Apache-2.0.
 - Fontlar: Inter, JetBrains Mono, Liberation Serif (SIL OFL) — `public/fonts`.
 - Efekt ve ortam sesleri bu projede sentezlenir.
