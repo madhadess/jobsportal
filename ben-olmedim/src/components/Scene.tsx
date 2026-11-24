@@ -2,7 +2,8 @@
 import React from "react";
 import { AbsoluteFill, Img, OffthreadVideo, interpolate, random, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { noise2D } from "@remotion/noise";
-import type { CameraMove, Insert, ManifestScene } from "../series/types";
+import type { CameraMove, Insert, ManifestLine, ManifestScene } from "../series/types";
+import { Stage } from "./toon/Stage";
 import { MONO } from "./fx";
 import { Clock } from "./inserts/Clock";
 import { Door } from "./inserts/Door";
@@ -61,8 +62,10 @@ export function cameraTransform(move: CameraMove, frame: number, dur: number, te
   return `translate(${tx + sx}px, ${ty + sy}px) rotate(${rot}deg) scale(${scale})`;
 }
 
-export const InsertView: React.FC<{ insert: Insert; tension: number }> = ({ insert, tension }) => {
+export const InsertView: React.FC<{ insert: Insert; tension: number; lines?: (ManifestLine & { rel: number })[] }> = ({ insert, tension, lines = [] }) => {
   switch (insert.kind) {
+    case "stage":
+      return <Stage ins={insert} tension={tension} lines={lines} />;
     case "phone":
       return <Phone ins={insert} />;
     case "clock":
@@ -153,7 +156,7 @@ export const SceneView: React.FC<{ scene: ManifestScene; draftBadges: boolean }>
             )}
           </>
         ) : scene.insert ? (
-          <InsertView insert={scene.insert} tension={scene.tension} />
+          <InsertView insert={scene.insert} tension={scene.tension} lines={scene.lines.map((l) => ({ ...l, rel: l.from - scene.from }))} />
         ) : (
           <Atmos ins={{ kind: "atmos", tone: "cold", light: "steady" }} tension={scene.tension} />
         )}

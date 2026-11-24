@@ -44,7 +44,15 @@ export type SpeakerId =
   | "babaTelefon" // telefon / eski ses kaydı
   | "anneTelefon" // Selma Yalçın, telefonda
   | "nermin" // ölü komşu Nermin Hanım
-  | "memur"; // belediye memuru
+  | "memur" // belediye memuru
+  // --- Özel bölüm: KAPI. TAVAN. ---
+  | "hikaye" // anlatıcı (bugün 18 yaşında)
+  | "benGenc" // anlatıcı, 14 yaşındaki hali
+  | "mustafa"
+  | "ercan"
+  | "ercanCin" // Ercan'ın içindeki ses
+  | "ercanAnne"
+  | "gokhan";
 
 export type ShotType = "ECU" | "CU" | "MCU" | "MS" | "WS" | "POV" | "INSERT" | "CCTV" | "OTS";
 
@@ -71,7 +79,10 @@ export type AmbienceId =
   | "basementHum"
   | "fireRoar"
   | "rain"
-  | "cityMorning";
+  | "cityMorning"
+  | "partyMusic"
+  | "nightStreet"
+  | "siren";
 
 export type SfxId =
   | "knock3"
@@ -99,7 +110,14 @@ export type SfxId =
   | "doorsOpen"
   | "powerDown"
   | "childHum"
-  | "suddenSilence";
+  | "suddenSilence"
+  | "slap"
+  | "bodyFall"
+  | "motorbike"
+  | "glassClink"
+  | "doorSlam"
+  | "liquidSplash"
+  | "musicCut";
 
 // ---------- Prosedürel (Remotion içinde çizilen) görsel katmanlar ----------
 
@@ -115,6 +133,8 @@ export type PhoneInsert = {
   progress?: [number, number];
   /** telefon titreşimi sahne başında */
   buzz?: boolean;
+  /** arama ekranı: mezar taşı görseli yerine bulanık sonuç başlıkları */
+  results?: string[];
   /** yakın plan: ekranın üst kısmına yakınlaşma çarpanı (1 = tüm telefon) */
   zoom?: number;
 };
@@ -210,6 +230,57 @@ export type MirrorInsert = { kind: "mirror"; lag?: number; lean?: boolean };
 export type ElevatorInsert = { kind: "elevator"; floors: string[]; stopOn: string };
 export type BlackoutInsert = { kind: "blackout" };
 
+export type ActorPose = "stand" | "dance" | "sit" | "sitFloor" | "lie" | "point" | "armsOut" | "grab" | "walk" | "handsFace" | "phone";
+export type ActorExpr = "neutral" | "smile" | "creepy" | "smirk" | "scared" | "shout" | "cry" | "possessed" | "blank" | "worried";
+
+/**
+ * Sahne içi zaman: saniye (sayı) ya da replik bağlantılı "L<i>[±sn]" (i. repliğin başı) /
+ * "E<i>[±sn]" (i. repliğin sonu). Ör. "E2" = 3. replik bitince, "L1+2.5" = 2. replik başlayınca 2,5 sn sonra.
+ */
+export type StageTime = number | `L${number}` | `E${number}` | `L${number}+${number}` | `E${number}+${number}` | `L${number}-${number}` | `E${number}-${number}`;
+
+/** 2D animasyon sahnesindeki bir karakter */
+export type StageActor = {
+  /** karakter görünümü (components/toon/Character.tsx → LOOKS) */
+  who: "ben" | "mustafa" | "ercan" | "gokhan" | "furkan" | "arkadas1" | "arkadas2" | "arkadas3" | "anne";
+  x: number; // 0..1 yatay konum
+  /** ayak çizgisi (px). Varsayılan 1720 */
+  y?: number;
+  scale?: number;
+  pose: ActorPose;
+  expr: ActorExpr;
+  /** bu konuşanların replikleri sırasında ağız seslendirmeyle senkron açılır */
+  speaks?: SpeakerId[];
+  back?: boolean;
+  bandages?: boolean;
+  flip?: boolean;
+  pointPeriod?: number;
+  shake?: number;
+  lookX?: number;
+  appearAt?: StageTime;
+  vanishAt?: StageTime;
+  /** [zaman, poz] — sahne içinde poz değişimi */
+  poseAt?: [StageTime, ActorPose][];
+  /** [zaman, ifade] */
+  exprAt?: [StageTime, ActorExpr][];
+  /** yürüyerek gitme: [başlangıç, bitiş, hedef x, hedef ölçek?, hedef ayak y?] */
+  moveTo?: [StageTime, StageTime, number, number?, number?];
+};
+
+export type StageInsert = {
+  kind: "stage";
+  bg: "party" | "living" | "candles" | "street" | "doorway" | "police" | "bedroom" | "glass" | "doorCeiling" | "hallway";
+  actors: StageActor[];
+  /** parti ışıkları/müzik bu saniyede kesilir */
+  lightsOffAt?: number;
+  /** bardak: siyah lekenin yayılmaya başladığı an */
+  stainAt?: number;
+  /** doorCeiling: kapı/tavan vurgusu periyodu */
+  period?: number;
+  /** sokak: ileri hareket hızı 0..1 */
+  speed?: number;
+};
+
 export type Insert =
   | PhoneInsert
   | ClockInsert
@@ -224,7 +295,8 @@ export type Insert =
   | WallInsert
   | MirrorInsert
   | ElevatorInsert
-  | BlackoutInsert;
+  | BlackoutInsert
+  | StageInsert;
 
 // ---------- Senaryo ----------
 
@@ -294,6 +366,14 @@ export type EpisodeSpec = {
   cliffhanger: string;
   /** hikâye içi tarih/saat */
   storyTime: string;
+  /** Özel bölüm: dosya/kompozisyon adı (ör. "kapi-tavan"). Yoksa eXX/BXX kullanılır. */
+  slug?: string;
+  /** Özel bölüm: süre aralığı (sn). Varsayılan 45–60. */
+  durationRange?: [number, number];
+  /** Özel bölüm: kapanış kartı metni */
+  endCardText?: string;
+  /** Özel bölüm: kapanış kartının alt satırı */
+  endCardSub?: string;
   scenes: SceneSpec[];
 };
 
@@ -305,6 +385,8 @@ export type ManifestLine = {
   src: string; // public/ altındaki göreli yol
   from: number; // bölüm başından kare
   durationInFrames: number;
+  /** kare başına ses yüksekliği zarfı 0..1 (ağız senkronu) */
+  env?: number[];
 };
 
 export type ManifestSfx = { id: SfxId; src: string; from: number; volume: number; durationInFrames: number };
@@ -332,6 +414,12 @@ export type SubtitleCue = { from: number; to: number; text: string; speaker: Spe
 
 export type EpisodeManifest = {
   episode: number;
+  /** dosya anahtarı (eXX / slug) */
+  key: string;
+  /** Remotion kompozisyon kimliği (BXX / SLUG) */
+  comp: string;
+  /** özel bölüm mü */
+  special: boolean;
   title: string;
   fps: number;
   width: number;
@@ -340,7 +428,7 @@ export type EpisodeManifest = {
   seconds: number;
   scenes: ManifestScene[];
   subtitles: SubtitleCue[];
-  endCard: { from: number; durationInFrames: number; text: string };
+  endCard: { from: number; durationInFrames: number; text: string; sub?: string };
   generatedAt: string;
 };
 

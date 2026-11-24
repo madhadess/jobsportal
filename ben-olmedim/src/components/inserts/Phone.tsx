@@ -174,6 +174,19 @@ function Screen({ ins, frame, fps, dur }: { ins: PhoneInsert; frame: number; fps
             <span style={{ width: 26, height: 26, borderRadius: "50%", border: "4px solid #9aa0a6" }} />
             {ins.title}
           </div>
+          {ins.results ? (
+            <div style={{ padding: "10px 40px" }}>
+              {ins.results.map((r, i) => (
+                <div key={i} style={{ marginBottom: 46 }}>
+                  <div style={{ fontSize: 22, opacity: 0.45 }}>forum.example › {i + 1}</div>
+                  <div style={{ fontSize: 36, color: "#8ab4f8", margin: "8px 0" }}>{r}</div>
+                  {[0, 1, 2].map((k) => (
+                    <div key={k} style={{ height: 18, margin: "10px 0", width: `${90 - k * 18}%`, borderRadius: 9, background: "#3a3d42", filter: "blur(2px)" }} />
+                  ))}
+                </div>
+              ))}
+            </div>
+          ) : (
           <div style={{ padding: "10px 40px" }}>
             <div style={{ fontSize: 24, opacity: 0.5 }}>vefat-ilanlari.example › kurtulus</div>
             <div style={{ fontSize: 38, color: "#8ab4f8", margin: "10px 0" }}>{ins.title?.split(" ").slice(0, 2).join(" ")} — Vefat İlanı</div>
@@ -202,6 +215,7 @@ function Screen({ ins, frame, fps, dur }: { ins: PhoneInsert; frame: number; fps
               </svg>
             </div>
           </div>
+          )}
         </div>
       );
   }

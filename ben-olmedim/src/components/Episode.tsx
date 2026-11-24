@@ -22,6 +22,9 @@ const AMB_GAIN: Record<AmbienceId, number> = {
   fireRoar: 0.35,
   rain: 0.25,
   cityMorning: 0.25,
+  partyMusic: 0.5,
+  nightStreet: 0.3,
+  siren: 0.22,
 };
 
 const Subtitles: React.FC<{ cues: SubtitleCue[] }> = ({ cues }) => {
@@ -50,14 +53,14 @@ const Subtitles: React.FC<{ cues: SubtitleCue[] }> = ({ cues }) => {
   );
 };
 
-const EndCard: React.FC<{ text: string; episode: number }> = ({ text, episode }) => {
+const EndCard: React.FC<{ text: string; episode: number; sub?: string }> = ({ text, episode, sub }) => {
   const f = useCurrentFrame();
   const o = interpolate(f, [10, 26], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   return (
     <AbsoluteFill style={{ background: "#000", alignItems: "center", justifyContent: "center" }}>
       <div style={{ opacity: o, textAlign: "center" }}>
         <div style={{ fontFamily: MONO, fontSize: 30, letterSpacing: 6, color: "rgba(255,255,255,0.86)" }}>{text}</div>
-        <div style={{ fontFamily: SERIF, fontSize: 24, letterSpacing: 10, color: "rgba(255,255,255,0.35)", marginTop: 26 }}>BEN ÖLMEDİM · {String(episode).padStart(2, "0")}</div>
+        <div style={{ fontFamily: SERIF, fontSize: 24, letterSpacing: 10, color: "rgba(255,255,255,0.35)", marginTop: 26 }}>{sub ?? `BEN ÖLMEDİM · ${String(episode).padStart(2, "0")}`}</div>
       </div>
     </AbsoluteFill>
   );
@@ -85,7 +88,7 @@ export const Episode: React.FC<EpisodeProps> = ({ episode, manifest, subtitles, 
         </Sequence>
       ))}
       <Sequence from={manifest.endCard.from} durationInFrames={manifest.endCard.durationInFrames} name="Kapanış">
-        <EndCard text={manifest.endCard.text} episode={manifest.episode} />
+        <EndCard text={manifest.endCard.text} episode={manifest.episode} sub={manifest.endCard.sub} />
       </Sequence>
 
       <ColorGrade />

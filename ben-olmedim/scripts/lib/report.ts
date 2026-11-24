@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { CHARACTERS, LOCATIONS, VOICES } from "../../src/series/bible";
 import type { EpisodeManifest, EpisodeSpec } from "../../src/series/types";
+import { epKey } from "../../src/pipeline/timeline";
 import type { MediaStatus } from "./media";
 import { REPORT_DIR, ROOT } from "./paths";
 
@@ -17,14 +18,15 @@ export function validateEpisode(ep: EpisodeSpec, m?: EpisodeManifest): Validatio
   const issues: ValidationIssue[] = [];
   const words = ep.scenes.flatMap((s) => s.lines).reduce((a, l) => a + l.text.split(/\s+/).length, 0);
   if (words < 55) issues.push({ level: "warn", msg: `Konuşma ${words} kelime — çok kısa (ölçülen anlatım hızıyla hedef 60–100)` });
-  if (words > 110) issues.push({ level: "warn", msg: `Konuşma ${words} kelime — 60 sn'yi aşabilir` });
+  if (words > 110 && !ep.durationRange) issues.push({ level: "warn", msg: `Konuşma ${words} kelime — 60 sn'yi aşabilir` });
   if (!ep.scenes.length) issues.push({ level: "error", msg: "Sahne yok" });
   ep.scenes.forEach((s, i) => {
     if (!s.media && !s.insert) issues.push({ level: "warn", msg: `Sahne ${i + 1}: ne medya ne prosedürel katman var` });
   });
   if (m) {
-    if (m.seconds > 60) issues.push({ level: "error", msg: `Süre ${m.seconds} sn > 60 sn — repliği kısaltın` });
-    if (m.seconds < 45) issues.push({ level: "error", msg: `Süre ${m.seconds} sn < 45 sn` });
+    const [lo, hi] = ep.durationRange ?? [45, 60];
+    if (m.seconds > hi) issues.push({ level: "error", msg: `Süre ${m.seconds} sn > ${hi} sn — repliği kısaltın` });
+    if (m.seconds < lo) issues.push({ level: "error", msg: `Süre ${m.seconds} sn < ${lo} sn` });
     const firstLine = m.scenes[0]?.lines[0];
     if (firstLine && firstLine.from / m.fps > 1.6) issues.push({ level: "warn", msg: `İlk replik ${(firstLine.from / m.fps).toFixed(1)} sn'de başlıyor — ilk 3 sn kancası zayıf olabilir` });
   }
@@ -33,7 +35,7 @@ export function validateEpisode(ep: EpisodeSpec, m?: EpisodeManifest): Validatio
 
 export function writeReport(ep: EpisodeSpec, m: EpisodeManifest, media: MediaStatus[], issues: ValidationIssue[]): string {
   fs.mkdirSync(REPORT_DIR, { recursive: true });
-  const id = `e${String(ep.number).padStart(2, "0")}`;
+  const id = epKey(ep);
   const L: string[] = [];
   L.push(`# BEN ÖLMEDİM — Bölüm ${ep.number}: ${ep.title}`);
   L.push("");
@@ -109,7 +111,7 @@ export function writeMissingIndex(all: { ep: EpisodeSpec; media: MediaStatus[] }
         episode: ep.number,
         scene: x.id,
         type: x.type,
-        target: `public/media/e${String(ep.number).padStart(2, "0")}/${x.id}.${x.type === "video" ? "mp4" : "png"}`,
+        target: `public/media/${epKey(ep)}/${x.id}.${x.type === "video" ? "mp4" : "png"}`,
         seconds: Math.ceil(x.prompt.seconds),
         prompt: x.prompt.prompt,
         negative: x.prompt.negative,

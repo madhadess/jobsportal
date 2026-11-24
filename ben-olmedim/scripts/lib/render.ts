@@ -29,7 +29,7 @@ export async function renderEpisode(
   if (opts.final && missing.length) {
     throw new Error(`--final: ${missing.length} sahnenin yapay zekâ medyası eksik (${missing.map((s) => s.id).join(", ")}). Önce medyayı ekleyin ya da animatik render alın.`);
   }
-  const id = `B${String(m.episode).padStart(2, "0")}`;
+  const id = m.comp;
   if (!bundled) {
     opts.log("  Remotion paketleniyor…");
     bundled = await bundle({ entryPoint: path.join(ROOT, "src", "index.ts"), publicDir: path.join(ROOT, "public") });
@@ -39,7 +39,7 @@ export async function renderEpisode(
   const composition = await selectComposition({ serveUrl: bundled, id, inputProps, browserExecutable: exe });
   fs.mkdirSync(OUT_DIR, { recursive: true });
   const suffix = missing.length ? "_ANIMATIK" : "";
-  const out = path.join(OUT_DIR, `BEN_OLMEDIM_${id}${suffix}.mp4`);
+  const out = path.join(OUT_DIR, `${m.special ? id.replace(/-/g, "_") : `BEN_OLMEDIM_${id}`}${suffix}.mp4`);
   let last = -1;
   const t0 = Date.now();
   await renderMedia({

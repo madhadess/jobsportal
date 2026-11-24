@@ -9,8 +9,8 @@
 //   npm run screenplay               → okunabilir sezon senaryosu (reports/SENARYO.md)
 import fs from "node:fs";
 import path from "node:path";
-import { buildManifest, toSrt } from "../src/pipeline/timeline";
-import { EPISODES, getEpisode } from "../src/series";
+import { buildManifest, epKey, toSrt } from "../src/pipeline/timeline";
+import { EPISODES, SPECIALS, getEpisode } from "../src/series";
 import { SERIES, VOICES } from "../src/series/bible";
 import type { EpisodeManifest, SfxId } from "../src/series/types";
 import { configuredProvider, findSceneMedia, resolveEpisodeMedia } from "./lib/media";
@@ -33,6 +33,8 @@ const log = (s: string) => console.log(s);
 
 function parseTarget(t: string): number[] {
   if (t === "all") return EPISODES.map((e) => e.number);
+  const special = SPECIALS.find((e) => e.slug === t);
+  if (special) return [special.number];
   return t.split(",").flatMap((part) => {
     const [a, b] = part.split("-").map(Number);
     return b ? Array.from({ length: b - a + 1 }, (_, i) => a + i) : [a];
@@ -56,16 +58,17 @@ async function prepare(n: number, generateMedia: boolean): Promise<EpisodeManife
   const voice = await synthesizeEpisode(ep, { force: flags.has("--force-tts"), log });
   const sfx = sfxDurations();
   // 1. geçiş: medyasız zamanlama (prompt süreleri için)
-  const media0 = ep.scenes.map((_, i) => findSceneMedia(n, i));
+  const key = epKey(ep);
+  const media0 = ep.scenes.map((_, i) => findSceneMedia(key, i));
   let manifest = buildManifest({ episode: ep, voice, sfxSeconds: sfx, media: media0 });
   const sceneSecs = manifest.scenes.map((s) => s.durationInFrames / manifest.fps);
   const mediaStatus = await resolveEpisodeMedia(ep, sceneSecs, { generate: generateMedia, log });
-  const media = ep.scenes.map((_, i) => mediaStatus.find((m) => m.sceneIndex === i)?.file ?? findSceneMedia(n, i));
+  const media = ep.scenes.map((_, i) => mediaStatus.find((m) => m.sceneIndex === i)?.file ?? findSceneMedia(key, i));
   manifest = buildManifest({ episode: ep, voice, sfxSeconds: sfx, media });
   fs.mkdirSync(MANIFEST_DIR, { recursive: true });
-  fs.writeFileSync(path.join(MANIFEST_DIR, `e${pad(n)}.json`), JSON.stringify(manifest, null, 1));
+  fs.writeFileSync(path.join(MANIFEST_DIR, `${key}.json`), JSON.stringify(manifest, null, 1));
   fs.mkdirSync(OUT_DIR, { recursive: true });
-  fs.writeFileSync(path.join(OUT_DIR, `BEN_OLMEDIM_B${pad(n)}.srt`), toSrt(manifest));
+  fs.writeFileSync(path.join(OUT_DIR, ep.slug ? `${ep.slug.toUpperCase().replace(/-/g, "_")}.srt` : `BEN_OLMEDIM_B${pad(n)}.srt`), toSrt(manifest));
   const issues = validateEpisode(ep, manifest);
   const report = writeReport(ep, manifest, mediaStatus, issues);
   const missing = writeMissingIndex([{ ep, media: mediaStatus }]);
@@ -102,7 +105,7 @@ function statusTable() {
     const mf = path.join(MANIFEST_DIR, `e${pad(ep.number)}.json`);
     const m: EpisodeManifest | null = fs.existsSync(mf) ? JSON.parse(fs.readFileSync(mf, "utf8")) : null;
     const needs = ep.scenes.filter((s) => s.media).length;
-    const have = ep.scenes.filter((s, i) => s.media && findSceneMedia(ep.number, i)).length;
+    const have = ep.scenes.filter((s, i) => s.media && findSceneMedia(epKey(ep), i)).length;
     const final = fs.existsSync(path.join(OUT_DIR, `BEN_OLMEDIM_B${pad(ep.number)}.mp4`));
     const animatic = fs.existsSync(path.join(OUT_DIR, `BEN_OLMEDIM_B${pad(ep.number)}_ANIMATIK.mp4`));
     rows.push(
@@ -141,7 +144,7 @@ async function main() {
     }
     case "render":
       for (const n of eps) {
-        const mf = path.join(MANIFEST_DIR, `e${pad(n)}.json`);
+        const mf = path.join(MANIFEST_DIR, `${epKey(getEpisode(n))}.json`);
         if (!fs.existsSync(mf)) await prepare(n, false);
         const m: EpisodeManifest = JSON.parse(fs.readFileSync(mf, "utf8"));
         await renderEpisode(m, { final: flags.has("--final"), subtitles: !flags.has("--no-subs"), draftBadges: !flags.has("--clean"), log });

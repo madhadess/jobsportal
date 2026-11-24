@@ -301,6 +301,13 @@ export const VOICES: Record<SpeakerId, VoiceProfile> = {
   anneTelefon: { voice: "tr_TR-fettah-medium", lengthScale: 1.15, sentencePause: 0.45, noiseScale: 0.6, pitch: 1.22, filters: PHONE_BAND, gainDb: 0, label: "Selma Yalçın (telefon)" },
   nermin: { voice: "tr_TR-fettah-medium", lengthScale: 1.32, sentencePause: 0.5, noiseScale: 0.45, pitch: 1.15, filters: ["tremolo=f=5:d=0.12", ...ROOM_VERB], gainDb: 0, label: "Nermin Hanım" },
   memur: { voice: "tr_TR-fettah-medium", lengthScale: 1.1, sentencePause: 0.35, noiseScale: 0.6, pitch: 1.0, filters: ["aecho=0.8:0.4:20|40:0.1|0.06"], gainDb: 0, label: "Memur" },
+  hikaye: { voice: "tr_TR-fahrettin-medium", lengthScale: 1.18, sentencePause: 0.5, noiseScale: 0.55, pitch: 0.97, filters: ["acompressor=threshold=-18dB:ratio=3", ...ROOM_VERB], gainDb: 0, label: "Anlatıcı" },
+  benGenc: { voice: "tr_TR-fahrettin-medium", lengthScale: 1.08, sentencePause: 0.35, noiseScale: 0.6, pitch: 1.12, filters: [...ROOM_VERB], gainDb: 0, label: "Ben (14 yaşında)" },
+  mustafa: { voice: "tr_TR-fahrettin-medium", lengthScale: 1.35, sentencePause: 0.6, noiseScale: 0.4, pitch: 1.08, filters: ["aecho=0.8:0.6:60|120:0.25|0.15"], gainDb: -1, label: "Mustafa" },
+  ercan: { voice: "tr_TR-fettah-medium", lengthScale: 1.0, sentencePause: 0.35, noiseScale: 0.7, pitch: 0.98, filters: [...ROOM_VERB], gainDb: 0, label: "Ercan" },
+  ercanCin: { voice: "tr_TR-fettah-medium", lengthScale: 1.5, sentencePause: 0.6, noiseScale: 0.3, pitch: 0.68, filters: ["aecho=0.8:0.75:70|140|210:0.4|0.3|0.2", "acrusher=bits=8:mix=0.2", "lowpass=f=4500"], gainDb: 1, label: "Ercan (o ses)" },
+  ercanAnne: { voice: "tr_TR-fettah-medium", lengthScale: 1.15, sentencePause: 0.45, noiseScale: 0.6, pitch: 1.2, filters: [...ROOM_VERB], gainDb: 0, label: "Ercan'ın annesi" },
+  gokhan: { voice: "tr_TR-fahrettin-medium", lengthScale: 1.2, sentencePause: 0.4, noiseScale: 0.6, pitch: 1.1, filters: [...ROOM_VERB], gainDb: 0, label: "Gökhan" },
 };
 
 /** Yalnızca TTS_ALLOW_NC=1 iken kullanılan, ticari olmayan lisanslı (dfki) kadın/çocuk sesleri. */
@@ -308,4 +315,21 @@ export const NC_VOICE_OVERRIDES: Partial<Record<SpeakerId, Partial<VoiceProfile>
   cocuk: { voice: "tr_TR-dfki-medium", lengthScale: 1.3, pitch: 1.24 },
   anneTelefon: { voice: "tr_TR-dfki-medium", lengthScale: 1.18, pitch: 0.97 },
   nermin: { voice: "tr_TR-dfki-medium", lengthScale: 1.35, pitch: 0.9 },
+};
+
+/**
+ * Doğal ses motoru (TTS_ENGINE=voxcpm): Trendyol-TTS (VoxCPM2, MIT). Her konuşan `voices/<id>.wav`
+ * referansından klonlanır; `refText` kaydın birebir dökümüdür. Referans yoksa `design` tarifiyle üretilir.
+ * `pitch`/`filters` klonlanan sese uygulanan son işlem (ör. cin sesi için daha kalın ve yankılı).
+ */
+export type VoxProfile = { refText: string; design: string; pitch?: number; filters?: string[] };
+
+export const VOX: Partial<Record<SpeakerId, VoxProfile>> = {
+  hikaye: { refText: "O gece olanları kimseye tam olarak anlatamadım. Şimdi anlatacağım.", design: "A young Turkish man about eighteen years old, low calm voice, slow storytelling pace, slightly dark haunted tone", filters: ["aecho=0.8:0.5:30|60:0.12|0.07"] },
+  benGenc: { refText: "Hadi oğlum, kalk, gel sen de bizimle dans et.", design: "A fourteen-year-old Turkish boy, casual, cheerful and energetic", pitch: 1.06 },
+  mustafa: { refText: "Siz daha hiçbir şey görmediniz. Bekleyin.", design: "A thin quiet teenage boy with a high soft voice, calm and eerie", filters: ["aecho=0.8:0.6:60|120:0.25|0.15"] },
+  ercan: { refText: "Korkmayın lan, hiçbir şey olmaz, ben buradayım.", design: "A cocky sixteen-year-old Turkish boy, loud and mocking tone" },
+  ercanCin: { refText: "Buradan gidin. Hemen.", design: "A very deep hoarse inhuman male voice, slow, menacing, cold", pitch: 0.8, filters: ["aecho=0.8:0.75:70|140|210:0.4|0.3|0.2", "lowpass=f=4500"] },
+  ercanAnne: { refText: "Hesabınıza beş yüz TL yatırıldı. İyi günler dileriz, yine bekleriz.", design: "A worried Turkish woman in her forties, tired and anxious voice", filters: ["aecho=0.8:0.4:20|40:0.1|0.06"] },
+  gokhan: { refText: "Ben bir şey görmedim. Gerçekten hatırlamıyorum.", design: "A frightened fourteen-year-old boy, trembling quiet voice", pitch: 1.04 },
 };

@@ -434,6 +434,123 @@ def amb_city_morning(sec=30):
     return loopify(stereo(norm(traffic + reverb(birds, 1.0, 0.4)[: len(tt)], 0.3), 0.9))
 
 
+# ------------------------- özel bölüm: KAPI. TAVAN. -------------------------
+
+def slap():
+    tt = t(0.5)
+    s = fft_filter(rng.standard_normal(len(tt)), 600, 9000) * np.exp(-tt * 70)
+    s += fft_filter(rng.standard_normal(len(tt)), 150, 900) * np.exp(-tt * 40) * 0.5
+    return stereo(norm(reverb(s, 0.5, 0.2)[: len(tt)], 0.8), 0.2)
+
+
+def body_fall():
+    tt = t(1.6)
+    thud = np.sin(2 * np.pi * (55 + 40 * np.exp(-tt * 12)) * tt) * np.exp(-tt * 7)
+    cloth = fft_filter(rng.standard_normal(len(tt)), 300, 3500) * np.exp(-tt * 9) * 0.4
+    second = np.zeros(len(tt))
+    k = int(0.18 * SR)
+    second[k:] = thud[: len(tt) - k] * 0.45
+    return stereo(norm(reverb(thud + cloth + second, 0.9, 0.25)[: len(tt)], 0.95), 0.3)
+
+
+def motorbike(sec=6.0):
+    tt = t(sec)
+    rpm = 38 + 22 * np.clip(tt / 1.5, 0, 1) + 6 * np.sin(2 * np.pi * 0.4 * tt)
+    ph = 2 * np.pi * np.cumsum(rpm) / SR
+    eng = np.sign(np.sin(ph)) * 0.5 + np.sin(2 * ph) * 0.3 + np.sin(3 * ph) * 0.15
+    eng = fft_filter(eng, 30, 2500) + fft_filter(rng.standard_normal(len(tt)), 200, 1800) * 0.15
+    pan = np.clip(tt / sec, 0, 1)
+    env_ = np.minimum(1, tt / 0.6) * np.minimum(1, (sec - tt) / 1.2)
+    l = eng * env_ * (1 - pan * 0.6)
+    r = eng * env_ * (0.4 + pan * 0.6)
+    return np.stack([norm(l, 0.6), norm(r, 0.6)], 1)
+
+
+def glass_clink():
+    tt = t(1.2)
+    s = sum(np.sin(2 * np.pi * f * tt) * np.exp(-tt * d) for f, d in ((2350, 6), (3720, 9), (5100, 12)))
+    s += fft_filter(rng.standard_normal(len(tt)), 2000, 9000) * np.exp(-tt * 120) * 0.5
+    return stereo(norm(reverb(s, 0.8, 0.2)[: len(tt)], 0.5))
+
+
+def door_slam():
+    tt = t(2.0)
+    hit = np.sin(2 * np.pi * (70 + 60 * np.exp(-tt * 20)) * tt) * np.exp(-tt * 9)
+    rattle = fft_filter(rng.standard_normal(len(tt)), 800, 5000) * np.exp(-tt * 18) * 0.5
+    return stereo(norm(reverb(hit + rattle, 1.6, 0.35)[: len(tt)], 0.95), 0.4)
+
+
+def liquid_splash():
+    tt = t(1.4)
+    s = np.zeros(len(tt))
+    for _ in range(40):
+        p = rng.integers(0, int(0.6 * SR))
+        d = np.arange(2500) / SR
+        s[p : p + 2500] += np.sin(2 * np.pi * rng.uniform(400, 1400) * d * (1 + d * 8)) * np.exp(-d * 60) * rng.uniform(0.2, 0.8)
+    s += fft_filter(rng.standard_normal(len(tt)), 300, 3000) * np.exp(-tt * 6) * 0.4
+    return stereo(norm(s, 0.6), 0.3)
+
+
+def music_cut():
+    """Müziğin aniden kesildiği an: kısa bir 'tık' ve boşalan oda."""
+    tt = t(0.8)
+    c = fft_filter(rng.standard_normal(len(tt)), 200, 6000) * np.exp(-tt * 200)
+    hum = np.sin(2 * np.pi * 50 * tt) * np.exp(-tt * 6) * 0.2
+    return stereo(norm(c + hum, 0.6))
+
+
+def amb_party_music(sec=32):
+    """Özgün dans ritmi (124 BPM): bas davul, bas hattı, hi-hat, akor — duvar arkasından gibi hafif boğuk."""
+    n = int(sec * SR)
+    out = np.zeros(n)
+    beat = 60 / 124
+    tt = np.arange(n) / SR
+    for b in range(int(sec / beat)):
+        s = int(b * beat * SR)
+        kt = np.arange(int(0.25 * SR)) / SR
+        kick = np.sin(2 * np.pi * (45 + 90 * np.exp(-kt * 30)) * kt) * np.exp(-kt * 14)
+        out[s : s + len(kick)] += kick[: n - s] * 0.9
+        hs = s + int(beat / 2 * SR)
+        if hs < n - 3000:
+            hat = fft_filter(rng.standard_normal(3000), 6000, 12000) * np.exp(-np.arange(3000) / 300)
+            out[hs : hs + 3000] += hat * 0.25
+        if b % 2 == 1:
+            sn = fft_filter(rng.standard_normal(6000), 800, 6000) * np.exp(-np.arange(6000) / 900)
+            out[s : s + 6000] += sn[: n - s] * 0.35
+    roots = [55, 55, 65.4, 49]
+    for i in range(int(sec / (beat * 4))):
+        f = roots[i % 4]
+        s, e = int(i * 4 * beat * SR), min(n, int((i + 1) * 4 * beat * SR))
+        seg = tt[s:e] - tt[s]
+        gate = (np.sin(2 * np.pi * seg / (beat / 2)) > -0.3).astype(float)
+        out[s:e] += np.sign(np.sin(2 * np.pi * f * seg)) * 0.25 * gate
+        out[s:e] += sum(np.sin(2 * np.pi * f * 4 * r * seg) for r in (1, 1.26, 1.5)) * 0.05
+    out = lowpass(out, 2200)  # yan odadan duyuluyormuş gibi
+    return loopify(stereo(norm(reverb(out, 0.8, 0.25)[:n], 0.7), 0.6), 0.5)
+
+
+def amb_night_street(sec=30):
+    n = int(sec * SR)
+    wind = fft_filter(pink(n), 80, 900) * (0.6 + 0.4 * np.sin(2 * np.pi * 0.05 * t(sec)))
+    far = fft_filter(brown(n), 30, 300) * 0.5
+    dog = np.zeros(n)
+    for p in (int(7 * SR), int(19 * SR)):
+        for k in range(2):
+            d = np.arange(int(0.18 * SR)) / SR
+            bark = np.sin(2 * np.pi * (420 - 200 * d) * d) * np.exp(-d * 18)
+            q = p + int(k * 0.35 * SR)
+            dog[q : q + len(d)] += fft_filter(bark + rng.standard_normal(len(d)) * 0.3, 200, 2500) * 0.15
+    return loopify(stereo(norm(wind * 0.5 + far + reverb(dog, 2.0, 0.6)[:n], 0.35), 0.9))
+
+
+def amb_siren(sec=30):
+    tt = t(sec)
+    f = 700 + 350 * np.sin(2 * np.pi * 0.35 * tt)
+    s = np.sin(2 * np.pi * np.cumsum(f) / SR) + 0.3 * np.sin(4 * np.pi * np.cumsum(f) / SR)
+    s = lowpass(s, 1800) * 0.4  # uzaktan
+    return loopify(stereo(norm(reverb(s, 2.5, 0.6)[: len(tt)], 0.3), 0.8))
+
+
 EFFECTS = {
     "knock3": knock3,
     "knock1": knock1,
@@ -461,6 +578,13 @@ EFFECTS = {
     "powerDown": power_down,
     "childHum": child_hum,
     "suddenSilence": sudden_silence,
+    "slap": slap,
+    "bodyFall": body_fall,
+    "motorbike": motorbike,
+    "glassClink": glass_clink,
+    "doorSlam": door_slam,
+    "liquidSplash": liquid_splash,
+    "musicCut": music_cut,
 }
 
 AMBIENCE = {
@@ -472,6 +596,9 @@ AMBIENCE = {
     "fireRoar": amb_fire_roar,
     "rain": amb_rain,
     "cityMorning": amb_city_morning,
+    "partyMusic": amb_party_music,
+    "nightStreet": amb_night_street,
+    "siren": amb_siren,
 }
 
 

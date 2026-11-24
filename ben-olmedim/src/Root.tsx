@@ -2,6 +2,8 @@ import React from "react";
 import { Composition, staticFile } from "remotion";
 import { Episode, type EpisodeProps } from "./components/Episode";
 import { SERIES } from "./series/bible";
+import { SPECIALS } from "./series";
+import { compKey, epKey } from "./pipeline/timeline";
 import type { EpisodeManifest } from "./series/types";
 
 const pad = (n: number) => String(n).padStart(2, "0");
@@ -34,5 +36,28 @@ export const RemotionRoot: React.FC = () => (
         />
       );
     })}
+    {SPECIALS.map((ep) => (
+      <Composition
+        key={ep.slug}
+        id={compKey(ep)}
+        component={Episode}
+        width={SERIES.width}
+        height={SERIES.height}
+        fps={SERIES.fps}
+        durationInFrames={SERIES.fps * 3}
+        defaultProps={{ episode: ep.number, manifest: null, subtitles: true, draftBadges: true } satisfies EpisodeProps}
+        calculateMetadata={async ({ props }) => {
+          if (props.manifest) return { durationInFrames: props.manifest.durationInFrames };
+          try {
+            const res = await fetch(staticFile(`manifests/${epKey(ep)}.json`));
+            if (!res.ok) return {};
+            const manifest = (await res.json()) as EpisodeManifest;
+            return { durationInFrames: manifest.durationInFrames, props: { ...props, manifest } };
+          } catch {
+            return {};
+          }
+        }}
+      />
+    ))}
   </>
 );

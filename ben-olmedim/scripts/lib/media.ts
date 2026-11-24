@@ -9,18 +9,19 @@ import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { buildScenePrompt, type BuiltPrompt } from "../../src/pipeline/prompts";
+import { epKey } from "../../src/pipeline/timeline";
 import type { EpisodeSpec } from "../../src/series/types";
 import { CACHE_DIR, MEDIA_DIR, ROOT, pub } from "./paths";
 
 const EXTS = [".mp4", ".webm", ".mov", ".png", ".jpg", ".jpeg", ".webp"];
 
-export const sceneMediaBase = (ep: number, si: number) =>
-  `e${String(ep).padStart(2, "0")}s${String(si + 1).padStart(2, "0")}`;
+/** key: bölüm anahtarı (eXX ya da özel bölüm slug'ı) */
+export const sceneMediaBase = (key: string, si: number) => `${key}s${String(si + 1).padStart(2, "0")}`;
 
 /** public/media/eXX/eXXsYY.(mp4|png…) — elle eklenen ya da üretilen dosyayı bulur. */
-export function findSceneMedia(ep: number, si: number): string | null {
-  const dir = path.join(MEDIA_DIR, `e${String(ep).padStart(2, "0")}`);
-  const base = sceneMediaBase(ep, si);
+export function findSceneMedia(key: string, si: number): string | null {
+  const dir = path.join(MEDIA_DIR, key);
+  const base = sceneMediaBase(key, si);
   for (const ext of EXTS) {
     const p = path.join(dir, base + ext);
     if (fs.existsSync(p)) return pub(p);
@@ -158,15 +159,15 @@ export async function resolveEpisodeMedia(
   for (const [si, scene] of ep.scenes.entries()) {
     const built = buildScenePrompt(scene, sceneSeconds[si] ?? 5);
     if (!built || !scene.media) continue;
-    const id = sceneMediaBase(ep.number, si);
+    const id = sceneMediaBase(epKey(ep), si);
     const missingRefs = built.referenceImages.filter((r) => !fs.existsSync(path.join(ROOT, r)));
-    const existing = findSceneMedia(ep.number, si);
+    const existing = findSceneMedia(epKey(ep), si);
     const st: MediaStatus = { sceneIndex: si, id, type: scene.media.type, status: existing ? "present" : "missing", file: existing, prompt: built, missingRefs };
     const h = promptHash(built);
     if (!existing && index[h] && fs.existsSync(path.join(ROOT, index[h].file))) {
       // aynı prompt başka bir sahnede üretilmiş → kopyala (ücretsiz yeniden kullanım)
       const ext = path.extname(index[h].file);
-      const dest = path.join(MEDIA_DIR, `e${String(ep.number).padStart(2, "0")}`, id + ext);
+      const dest = path.join(MEDIA_DIR, epKey(ep), id + ext);
       fs.mkdirSync(path.dirname(dest), { recursive: true });
       fs.copyFileSync(path.join(ROOT, index[h].file), dest);
       st.status = "cached";
@@ -178,7 +179,7 @@ export async function resolveEpisodeMedia(
         const r = await fetch(url);
         if (!r.ok) throw new Error(`indirme ${r.status}`);
         const ext = scene.media.type === "video" ? ".mp4" : ".png";
-        const dest = path.join(MEDIA_DIR, `e${String(ep.number).padStart(2, "0")}`, id + ext);
+        const dest = path.join(MEDIA_DIR, epKey(ep), id + ext);
         fs.mkdirSync(path.dirname(dest), { recursive: true });
         fs.writeFileSync(dest, Buffer.from(await r.arrayBuffer()));
         index[h] = { file: path.relative(ROOT, dest), provider: provider.name, model: provider.model(scene.media.type), createdAt: new Date().toISOString() };

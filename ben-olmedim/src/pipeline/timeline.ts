@@ -15,7 +15,7 @@ export const MIN_SCENE_SECONDS = 2.2;
 export type TimelineInputs = {
   episode: EpisodeSpec;
   /** her replik için [sahneIndex][replikIndex] → { src, seconds } */
-  voice: { src: string; seconds: number }[][];
+  voice: { src: string; seconds: number; env?: number[] }[][];
   sfxSeconds: Record<SfxId, number>;
   /** sahne index → mevcut medya dosyası (public/ göreli) */
   media: (string | null)[];
@@ -74,13 +74,18 @@ export function splitSubtitle(text: string, maxChars = 34): string[] {
   return chunks;
 }
 
+/** Dosya/kompozisyon anahtarı: özel bölümlerde slug, dizide eXX */
+export const epKey = (ep: Pick<EpisodeSpec, "number" | "slug">) => ep.slug ?? `e${String(ep.number).padStart(2, "0")}`;
+/** Remotion kompozisyon kimliği */
+export const compKey = (ep: Pick<EpisodeSpec, "number" | "slug">) => (ep.slug ? ep.slug.toUpperCase() : `B${String(ep.number).padStart(2, "0")}`);
+
 export function buildManifest(inp: TimelineInputs): EpisodeManifest {
   const { episode: ep, voice, sfxSeconds, media } = inp;
   const fps = inp.fps ?? SERIES.fps;
   const timings = ep.scenes.map((_, i) => timeScene(ep, i, voice, sfxSeconds));
   const endCard = SERIES.endCardSeconds;
   const baseTotal = timings.reduce((a, t) => a + t.base, 0) + endCard;
-  const target = SERIES.minSeconds + 1; // 46 sn alt hedef: platform sınırlarına güvenli pay
+  const target = (ep.durationRange?.[0] ?? SERIES.minSeconds) + 1; // alt sınıra güvenli pay
   const pads = distributePadding(
     timings.map((t) => t.base),
     ep.scenes.map((s) => s.tension),
@@ -109,7 +114,7 @@ export function buildManifest(inp: TimelineInputs): EpisodeManifest {
         subtitles.push({ from: pf, to: pf + len, text: p, speaker: l.speaker });
         pf += len;
       });
-      return { speaker: l.speaker, text: l.text, src: voice[i][j].src, from: lf, durationInFrames: d };
+      return { speaker: l.speaker, text: l.text, src: voice[i][j].src, from: lf, durationInFrames: d, ...(voice[i][j].env && ep.slug ? { env: voice[i][j].env } : {}) };
     });
     const sfx = s.sfx.map((c) => {
       const sd = sfxSeconds[c.id] ?? 1;
@@ -120,7 +125,7 @@ export function buildManifest(inp: TimelineInputs): EpisodeManifest {
       return { id: c.id, src: `audio/sfx/${c.id}.wav`, from: from + f(at), volume: c.volume ?? 0.8, durationInFrames: Math.max(1, f(sd)) };
     });
     scenes.push({
-      id: `e${String(ep.number).padStart(2, "0")}s${String(i + 1).padStart(2, "0")}`,
+      id: `${epKey(ep)}s${String(i + 1).padStart(2, "0")}`,
       index: i,
       title: s.title,
       from,
@@ -144,6 +149,9 @@ export function buildManifest(inp: TimelineInputs): EpisodeManifest {
   const durationInFrames = cursorFrames + endFrames;
   return {
     episode: ep.number,
+    key: epKey(ep),
+    comp: compKey(ep),
+    special: !!ep.slug,
     title: ep.title,
     fps,
     width: SERIES.width,
@@ -155,7 +163,8 @@ export function buildManifest(inp: TimelineInputs): EpisodeManifest {
     endCard: {
       from: cursorFrames,
       durationInFrames: endFrames,
-      text: ep.number >= SERIES.episodes ? "SEZON SONU" : `DEVAM EDECEK — BÖLÜM ${ep.number + 1}`,
+      text: ep.endCardText ?? (ep.number >= SERIES.episodes ? "SEZON SONU" : `DEVAM EDECEK — BÖLÜM ${ep.number + 1}`),
+      sub: ep.endCardSub,
     },
     generatedAt: new Date().toISOString(),
   };
